@@ -8,6 +8,8 @@ class FarmersData {
       this.crop, this.img);
 }
 
+
+
 // init data
 List<FarmersData> farmersData = [
   FarmersData(
@@ -28,7 +30,12 @@ List<FarmersData> farmersData = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGAR6UXKA5vkCHBfdJ8LuRsy-TKfV6PTO26Q&usqp=CAU")
 ];
 
-Future<List<FarmersData>> getFarms(String name, String location, DateTime date,
+Future<List<FarmersData>> getfarmers() async {
+  
+  return farmersData;
+}
+
+Future<List<FarmersData>> addFarms(String name, String location, DateTime date,
     String contact, DateTime time, String crop) async {
   // generate random image
   String img = farmersImg[Random().nextInt(farmersImg.length)];

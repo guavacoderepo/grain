@@ -18,8 +18,10 @@ class _FarmersCornersCornertate extends State<FarmersCorner> {
 
   @override
   void initState() {
-    farmdate = getFarms("Muna Zame", "Ibi Taraba state", DateTime.now(),
-        "contact", DateTime.utc(2023, 3, 0), "crop");
+    // farmdate = getFarms("Muna Zame", "Ibi Taraba state", DateTime.now(),
+    //     "contact", DateTime.utc(2023, 3, 0), "crop");
+
+    farmdate = getfarmers();
     super.initState();
   }
 
