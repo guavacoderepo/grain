@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 
-input({String hint = ""}) => TextField(
+input(ctx,{String hint = ""}) => TextField(
+  controller: ctx,
       decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
