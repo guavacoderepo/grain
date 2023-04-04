@@ -45,7 +45,8 @@ Future<List<FarmersData>> addFarms(String name, String location, DateTime date,
   // generate random image
   String img = farmersImg[Random().nextInt(farmersImg.length)];
 
-  farmersData.add(FarmersData(name, location, time, contact, time, crop, img, des, size));
+  farmersData.add(
+      FarmersData(name, location, time, contact, time, crop, img, des, size));
 
   return farmersData;
 }

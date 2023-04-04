@@ -7,16 +7,16 @@ customeAppBar(title) => AppBar(
       title: Text(
         title,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 18,
         ),
       ),
-      actions: [
-        Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          ),
-        )
-      ],
+      // actions: [
+      //   Padding(
+      //     padding: EdgeInsets.only(left: 20),
+      //     child: IconButton(
+      //       onPressed: () {},
+      //       icon: Icon(Icons.search),
+      //     ),
+      //   )
+      // ],
     );
