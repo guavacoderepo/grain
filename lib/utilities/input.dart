@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 
-input(ctx,{String hint = ""}) => TextField(
-  controller: ctx,
+input(ctx, {String hint = "", int x = 1}) => TextField(
+      controller: ctx,
+      maxLines: x,
       decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -14,8 +15,6 @@ input(ctx,{String hint = ""}) => TextField(
               color: Colors.grey.withOpacity(0.5),
             ),
           ),
-          contentPadding: const EdgeInsets.only(
-            left: 20,
-          ),
+          contentPadding: const EdgeInsets.only(left: 20, right: 20, top: 5),
           hintText: hint),
     );

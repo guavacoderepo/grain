@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:grain/models/farmersClass.dart';
 import 'package:grain/utilities/appbar.dart';
@@ -16,8 +18,8 @@ class FarmerUpload extends StatefulWidget {
 class _FarmerUploadState extends State<FarmerUpload> {
   String? uploadImgPath = "";
   PlatformFile? file;
-  String? filePath;
-  String? fileName;
+  String? filePath = "";
+  String? fileName = "";
 
   final TextEditingController _name = TextEditingController();
   final TextEditingController _crop = TextEditingController();
@@ -25,6 +27,7 @@ class _FarmerUploadState extends State<FarmerUpload> {
   final TextEditingController _location = TextEditingController();
   final TextEditingController _size = TextEditingController();
   final TextEditingController _date = TextEditingController();
+  final TextEditingController _des = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +64,9 @@ class _FarmerUploadState extends State<FarmerUpload> {
                     font1("Farm Size"),
                     input(_size, hint: "Hint: 23sqKm"),
                     const SizedBox(height: 10),
+                    font1("Description"),
+                    input(_des, hint: "Enter it here", x: 5),
+                    const SizedBox(height: 10),
 
 // upolad image
                     Row(
@@ -71,10 +77,12 @@ class _FarmerUploadState extends State<FarmerUpload> {
                           width: 100,
                           child: InkWell(
                             onTap: () async => _imgPicker(),
-                            child: Image.network(
-                              "https://static.wikia.nocookie.net/find-the-markers-roblox/images/5/5f/Placeholder.jpg/revision/latest?cb=20220313030844",
-                              fit: BoxFit.cover,
-                            ),
+                            child: filePath == ""
+                                ? Image.network(
+                                    "https://static.wikia.nocookie.net/find-the-markers-roblox/images/5/5f/Placeholder.jpg/revision/latest?cb=20220313030844",
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.file(File(filePath!)),
                           ),
                         ),
                         font3("Choose image")
@@ -86,12 +94,12 @@ class _FarmerUploadState extends State<FarmerUpload> {
                       height: 50,
                       width: double.infinity,
                       child: TextButton(
-                        onPressed: () {
+                        onPressed: () async {
                           var splitdate = _date.text.split("/");
 
-                          if (splitdate.length != 3) {
-                            return;
-                          }
+                          if (splitdate.length != 3) return;
+
+// add to farms
                           setState(() {
                             addFarms(
                               _name.text,
@@ -104,13 +112,23 @@ class _FarmerUploadState extends State<FarmerUpload> {
                                 int.parse(splitdate[0]),
                               ),
                               _crop.text,
+                              _des.text,
+                              _size.text,
                             );
+
+                            print("££££££££££££££££ done ££££££££££££££££");
                           });
+// post farm
+                          Navigator.pop(context);
+// end of function
                         },
                         child: font1("Post", color: Colors.white),
                         style: TextButton.styleFrom(backgroundColor: deepGreen),
                       ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               )
@@ -124,18 +142,21 @@ class _FarmerUploadState extends State<FarmerUpload> {
   void _imgPicker() async {
     FilePickerResult? result =
         await FilePicker.platform.pickFiles(type: FileType.image);
+    try {
+      if (result != null) {
+        file = result.files.first;
+        setState(() {
+          filePath = file!.path;
 
-    if (result != null) {
-      file = result.files.first;
-      setState(() {
-        // filePath = file!.path;
-
-        fileName = file!.name;
-        // print(fileName);
-      });
-      // print(filePath);
-    } else {
-      // User canceled the picker
+          fileName = file!.name;
+          // print(fileName);
+        });
+        // print(filePath);
+      } else {
+        // User canceled the picker
+      }
+    } catch (e) {
+      print(e);
     }
   }
 }

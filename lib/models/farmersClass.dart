@@ -1,14 +1,12 @@
 import 'dart:math';
 
 class FarmersData {
-  String crop, contact, location, name, img;
+  String crop, contact, location, name, img, des, size;
   DateTime date, time;
 
   FarmersData(this.name, this.location, this.date, this.contact, this.time,
-      this.crop, this.img);
+      this.crop, this.size, this.des, this.img);
 }
-
-
 
 // init data
 List<FarmersData> farmersData = [
@@ -19,6 +17,8 @@ List<FarmersData> farmersData = [
       "09067435634",
       DateTime.utc(2022, 03, 03),
       "Red Maize",
+      "23sqkm",
+      "this crop yeild in less than 2o months, come it is cheap and affordable for you",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX5xrQVwZEiFpbZzE86OBkTu4WAM91FsyfLA&usqp=CAU"),
   FarmersData(
       "adanne mama",
@@ -27,20 +27,25 @@ List<FarmersData> farmersData = [
       "09067435634",
       DateTime.utc(2022, 03, 01),
       "white Maize",
+      "50sqkm",
+      "maize made imported from japan with good bread, come it is cheap and affordable for you",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGAR6UXKA5vkCHBfdJ8LuRsy-TKfV6PTO26Q&usqp=CAU")
 ];
 
+Stream<List<FarmersData>> sreamfarm() =>
+    Stream.periodic(const Duration(seconds: 1))
+        .asyncMap((event) => getfarmers());
+
 Future<List<FarmersData>> getfarmers() async {
-  
   return farmersData;
 }
 
 Future<List<FarmersData>> addFarms(String name, String location, DateTime date,
-    String contact, DateTime time, String crop) async {
+    String contact, DateTime time, String crop, des, size) async {
   // generate random image
   String img = farmersImg[Random().nextInt(farmersImg.length)];
 
-  farmersData.add(FarmersData(name, location, time, contact, time, crop, img));
+  farmersData.add(FarmersData(name, location, time, contact, time, crop, img, des, size));
 
   return farmersData;
 }
