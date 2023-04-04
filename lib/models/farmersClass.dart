@@ -41,12 +41,12 @@ Future<List<FarmersData>> getfarmers() async {
 }
 
 Future<List<FarmersData>> addFarms(String name, String location, DateTime date,
-    String contact, DateTime time, String crop, des, size) async {
+    String contact, DateTime time, String crop, String des, String size) async {
   // generate random image
   String img = farmersImg[Random().nextInt(farmersImg.length)];
 
   farmersData.add(
-      FarmersData(name, location, time, contact, time, crop, img, des, size));
+      FarmersData(name, location, time, contact, time, crop, size, des, img));
 
   return farmersData;
 }

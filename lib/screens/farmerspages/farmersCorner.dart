@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grain/models/farmersClass.dart';
-
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
-
 import 'ViewFarm.dart';
 import 'farmerUpload.dart';
 
@@ -16,15 +14,10 @@ class FarmersCorner extends StatefulWidget {
 }
 
 class _FarmersCornersCornertate extends State<FarmersCorner> {
-  // current idex
-  int _currentIndex = 0;
   Future<List<FarmersData>>? farmdate;
 
   @override
   void initState() {
-    // farmdate = getFarms("Muna Zame", "Ibi Taraba state", DateTime.now(),
-    //     "contact", DateTime.utc(2023, 3, 0), "crop");
-
     farmdate = getfarmers();
     super.initState();
   }
@@ -33,7 +26,7 @@ class _FarmersCornersCornertate extends State<FarmersCorner> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appbar section
-      appBar: customeAppBar("FarmersCorner Corner"),
+      appBar: customeAppBar("Farmers Corner"),
 
       // body section
       body: Padding(
@@ -119,24 +112,6 @@ class _FarmersCornersCornertate extends State<FarmersCorner> {
           MaterialPageRoute(builder: (context) => const FarmerUpload()),
         ),
         child: const Icon(Icons.edit),
-      ),
-
-// bottom nav
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: deepGreen,
-        unselectedItemColor: lightGrey,
-        elevation: 0,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.rice_bowl_outlined), label: "Farmer"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.house_siding_outlined), label: "Facilities"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.design_services_outlined), label: "Services")
-        ],
-        onTap: (value) => setState(() => _currentIndex = value),
       ),
     );
   }
