@@ -102,6 +102,13 @@ class _FacilityUploadState extends State<FacilityUpload> {
                             );
                           });
 // post farm
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: font3("Facility uploaded successfully",
+                                  color: Colors.white),
+                            ),
+                          );
                           Navigator.pop(context);
 // end of function
                         },

@@ -23,9 +23,17 @@ List<FacilityData> faciltyData = [
       "Ota, Ugun State",
       DateTime.utc(2023, 02, 01),
       "09067435634",
-      "500sqkm",
+      "500 tonnes",
       "A storage facility is an industry that rents out storage space, generally for a short period. These facilities can be rented by businesses and individuals to store various goods, including household items, business inventory, vehicles, gym equipment, etc.",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIO4cOWv1uMQdnF3LngLZHKTYin9UAS_KIaw&usqp=CAU")
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIO4cOWv1uMQdnF3LngLZHKTYin9UAS_KIaw&usqp=CAU"),
+  FacilityData(
+      "Johnwayne agric and farms limited ",
+      "Plot 1768, Bamish-II Layout, Kuje Area Council FCT, Abuja",
+      DateTime.utc(2023, 04, 04),
+      "08056671817",
+      "250,000 tonnes",
+      "A storage facility where famers rent to store their grains within a short period of time at affordable price, located in Abuja, Nigeria",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDAcgHdnYIfgYN3TsVr31WAyhKzDzyjYi0Aw&usqp=CAU")
 ];
 
 Stream<List<FacilityData>> streamfacilty() =>

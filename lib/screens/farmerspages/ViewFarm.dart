@@ -3,7 +3,6 @@ import 'package:grain/utilities/appbar.dart';
 
 import '../../utilities/font.dart';
 
-
 class ViewFarm extends StatefulWidget {
   String crop, contact, location, name, img, des, size;
   DateTime date, time;
@@ -39,9 +38,6 @@ class _ViewFarmState extends State<ViewFarm> {
               font3("Crop: ${widget.crop}"),
               const SizedBox(height: 10),
               font3("Location: ${widget.location}"),
-              const SizedBox(height: 10),
-
-              font3("Farm Size: ${widget.size}"),
               const SizedBox(height: 10),
 
               font3("Contact number: ${widget.contact}"),

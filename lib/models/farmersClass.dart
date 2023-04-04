@@ -29,7 +29,17 @@ List<FarmersData> farmersData = [
       "white Maize",
       "50sqkm",
       "maize made imported from japan with good bread, come it is cheap and affordable for you",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGAR6UXKA5vkCHBfdJ8LuRsy-TKfV6PTO26Q&usqp=CAU")
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGAR6UXKA5vkCHBfdJ8LuRsy-TKfV6PTO26Q&usqp=CAU"),
+  FarmersData(
+      "King saluta Farms",
+      "Okija, Anambra",
+      DateTime.utc(2023, 04, 04),
+      "08087654566",
+      DateTime.utc(2022, 02, 23),
+      "Soya beans",
+      "4300sqkm",
+      "Out farm product speaks for us. We've been in this for over 30yaers working with the best hands the field",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-CtsTUc22sakaAU74kx7T2W0396AK_KHplw&usqp=CAU")
 ];
 
 Stream<List<FarmersData>> sreamfarm() =>

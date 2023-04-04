@@ -97,7 +97,15 @@ class _FarmerUploadState extends State<FarmerUpload> {
                         onPressed: () async {
                           var splitdate = _date.text.split("/");
 
-                          if (splitdate.length != 3) return;
+                          if (splitdate.length != 3) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: font3("check date formate",
+                                    color: Colors.white),
+                              ),
+                            );
+                            return;
+                          }
 
 // add to farms
                           setState(() {
@@ -115,10 +123,15 @@ class _FarmerUploadState extends State<FarmerUpload> {
                               _des.text,
                               _size.text,
                             );
-
-                            print("££££££££££££££££ done ££££££££££££££££");
                           });
 // post farm
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: font3("Farm uploaded successfully",
+                                  color: Colors.white),
+                            ),
+                          );
                           Navigator.pop(context);
 // end of function
                         },
