@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: d6347d54a2d8028e0437e3c099f66fdb8ae02c4720c1e7534c9f24c10351f85d
+      sha256: "0c8368c9b3f0abbc193b9d6133649a614204b528982bebc7026372d61677ce3a"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.6"
+    version: "3.3.7"
   args:
     dependency: transitive
     description:
       name: args
-      sha256: "4cab82a83ffef80b262ddedf47a0a8e56ee6fbf7fe21e6e768b02792034dd440"
+      sha256: c372bb384f273f0c2a8aaaa226dad84dc27c8519a691b888725dec59518ad53a
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   async:
     dependency: transitive
     description:
@@ -81,14 +81,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
-  cross_file:
-    dependency: transitive
-    description:
-      name: cross_file
-      sha256: "0b0036e8cccbfbe0555fd83c1d31a6f30b77a96b598b35a5d36dd41f718695e9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.3+4"
   crypto:
     dependency: transitive
     description:
@@ -105,6 +97,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  fading_edge_scrollview:
+    dependency: transitive
+    description:
+      name: fading_edge_scrollview
+      sha256: c25c2231652ce774cc31824d0112f11f653881f43d7f5302c05af11942052031
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -125,10 +125,10 @@ packages:
     dependency: "direct main"
     description:
       name: file_picker
-      sha256: d8e9ca7e5d1983365c277f12c21b4362df6cf659c99af146ad4d04eb33033013
+      sha256: e6c7ad8e572379df86ea64ef0a5395889fba3954411d47ca021b888d79f8e798
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.6"
+    version: "5.2.11"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -154,10 +154,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_plugin_android_lifecycle
-      sha256: c224ac897bed083dabf11f238dd11a239809b446740be0c2044608c50029ffdf
+      sha256: "8ffe990dac54a4a5492747added38571a5ab474c8e5d196809ea08849c69b1bb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.9"
+    version: "2.0.13"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -168,78 +168,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.13.5"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      sha256: "2aa08ce0341cc9b354a498388e30986515406668dbcc4f7c950c3e715496693b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
   image:
     dependency: transitive
     description:
       name: image
-      sha256: "483a389d6ccb292b570c31b3a193779b1b0178e7eb571986d9a49904b6861227"
+      sha256: "73964e3609fb96e01e69b0924b939967c556e46c7ff05db2ea9e31019000f4ef"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.15"
-  image_picker:
-    dependency: "direct main"
-    description:
-      name: image_picker
-      sha256: cb25f04595a88450970dbe727243ba8cd21b6f7e0d7d1fc5b789fc6f52e95494
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.7+1"
-  image_picker_android:
-    dependency: transitive
-    description:
-      name: image_picker_android
-      sha256: dfb5b0f28b8786fcc662b7ed42bfb4b82a6cbbd74da1958384b10d40bdf212a7
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.6+6"
-  image_picker_for_web:
-    dependency: transitive
-    description:
-      name: image_picker_for_web
-      sha256: "98f50d6b9f294c8ba35e25cc0d13b04bfddd25dbc8d32fa9d566a6572f2c081c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.12"
-  image_picker_ios:
-    dependency: transitive
-    description:
-      name: image_picker_ios
-      sha256: d4cb8ab04f770dab9d04c7959e5f6d22e8c5280343d425f9344f93832cf58445
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.7+2"
-  image_picker_platform_interface:
-    dependency: transitive
-    description:
-      name: image_picker_platform_interface
-      sha256: "1991219d9dbc42a99aff77e663af8ca51ced592cd6685c9485e3458302d3d4f8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.3"
+    version: "4.0.16"
   intl:
     dependency: "direct main"
     description:
       name: intl
-      sha256: a3715e3bc90294e971cb7dc063fbf3cd9ee0ebf8604ffeafabd9e6f16abbdbe6
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.0"
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -264,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  marquee:
+    dependency: "direct main"
+    description:
+      name: marquee
+      sha256: "4b5243d2804373bdc25fc93d42c3b402d6ec1f4ee8d0bb72276edd04ae7addb8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
   matcher:
     dependency: transitive
     description:
@@ -316,10 +268,10 @@ packages:
     dependency: transitive
     description:
       name: pointycastle
-      sha256: c3120a968135aead39699267f4c74bc9a08e4e909e86bc1b0af5bfd78691123c
+      sha256: "7c1e5f0d23c9016c5bbd8b1473d0d3fb3fc851b876046039509e18e0c7485f2c"
       url: "https://pub.dev"
     source: hosted
-    version: "3.7.2"
+    version: "3.7.3"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -393,10 +345,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: c9ebe7ee4ab0c2194e65d3a07d8c54c5d00bb001b76081c4a04cdb8448b59e46
+      sha256: dd8f9344bc305ae2923e3d11a2a911d9a4e2c7dd6fe0ed10626d63211a69676e
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.3"
+    version: "4.1.3"
   xml:
     dependency: transitive
     description:
@@ -415,4 +367,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.19.0-429.0.dev <4.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.0.0"

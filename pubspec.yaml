@@ -35,8 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   intl: ^0.18.0
-  image_picker: ^0.8.7+1
   file_picker: ^5.2.6
+  marquee: ^2.2.3
 
 dev_dependencies:
   flutter_test:
@@ -83,11 +83,15 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: inter
+    - family: poppins
       fonts:
-        - asset: assets/fonts/Inter-Light.ttf
-        - asset: assets/fonts/Inter-Medium.ttf
-        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Thin.ttf
 
   #   - family: Trajan Pro
   #     fonts:
