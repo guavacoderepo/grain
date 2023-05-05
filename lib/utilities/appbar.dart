@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/input.dart';
+import 'package:iconly/iconly.dart';
 
 customeAppBar(title) => AppBar(
       backgroundColor: appColor,
@@ -11,7 +12,19 @@ customeAppBar(title) => AppBar(
           fontSize: 18,
         ),
       ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.bookmark_border,
+            ),
+          ),
+        )
+      ],
     );
+
 class AppBarContent extends StatelessWidget {
   const AppBarContent({super.key});
 

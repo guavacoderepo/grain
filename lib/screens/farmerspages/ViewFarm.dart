@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/appbar.dart';
+import 'package:grain/utilities/colors.dart';
+import 'package:grain/utilities/spacer.dart';
 
 import '../../utilities/font.dart';
 
 class ViewFarm extends StatefulWidget {
-  String crop, contact, location, name, img, des, size;
-  DateTime date, time;
-  ViewFarm(this.name, this.location, this.date, this.contact, this.time,
-      this.crop, this.size, this.des, this.img,
-      {super.key});
+  ViewFarm({super.key});
 
   @override
   State<ViewFarm> createState() => _ViewFarmState();
@@ -18,46 +16,45 @@ class _ViewFarmState extends State<ViewFarm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar("${widget.crop}, ${widget.location}"),
+      appBar: customeAppBar("Olams farms Limited"),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: Image.network(
-                  widget.img,
-                  fit: BoxFit.cover,
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: 250,
+              child: Image.network(
+                "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
+                fit: BoxFit.cover,
               ),
-              const SizedBox(height: 10),
-              font3("Crop: ${widget.crop}"),
-              const SizedBox(height: 10),
-              font3("Location: ${widget.location}"),
-              const SizedBox(height: 10),
+            ),
+            vertical(10),
+            h500("Cassava seed", 15, color: appColor),
+            vertical(10),
+            h400("Location: Takum ibi ladi", 13),
+            vertical(10),
 
-              font3("Contact number: ${widget.contact}"),
-              const SizedBox(height: 10),
+            h400("Contact number: 0908973826", 13, color: lightGrey),
+            vertical(10),
 
-              font3("Farm Size: ${widget.size}"),
-              const SizedBox(height: 10),
+            h400("Farm Size: 34589sqkm", 13, color: lightGrey),
+            vertical(10),
 
-              // font3("${data[len - i - 1].location.s}"),
-              font3(
-                  "Planted on: ${widget.time.day}/${widget.time.month}/${widget.time.year}"),
-              const SizedBox(height: 10),
+            // font3("${data[len - i - 1].location.s}"),
+            h400("Planted on: 23/4/2022", 13, color: lightGrey),
+            vertical(10),
 
-              font3("Description:\n${widget.des}"),
-              const SizedBox(height: 10),
-              // font3("${data[len - i - 1].location.s}"),
-              font3(
-                  "Posted on: ${widget.date.day}/${widget.date.month}/${widget.date.year}")
-            ],
-          ),
+            h400left(
+                "Description:\nOur silos, either flat or hopper bottom, are used for extended storage of large quantities of grain, seeds and granulate products. Our range of concrete base silos cover capacities ranging from 83 m3 to 45,055 m3 and with diameters from 4.58 m to 41.25 m.",
+                13,
+                color: lightGrey),
+            vertical(10),
+
+            // font3("${data[len - i - 1].location.s}"),
+            h400("Posted on: 23/4/2030", 13, color: lightGrey)
+          ],
         ),
       ),
     );
