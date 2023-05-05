@@ -20,7 +20,6 @@ font4(text, {Color color = const Color(0xff223D0D)}) => Text(
       style: TextStyle(fontSize: 20, color: color, fontWeight: FontWeight.w600),
     );
 
-
 // new design fonts
 Text h100(text, double size, {Color color = Colors.black}) => Text(
       text,
@@ -81,6 +80,8 @@ Text h500(text, double size, {Color color = Colors.black}) => Text(
         fontWeight: FontWeight.w500,
         color: color,
       ),
+      overflow: TextOverflow.ellipsis,
+      maxLines: 1,
     );
 
 // fontweight 600
@@ -103,4 +104,3 @@ Text h700(text, double size, {Color color = Colors.black}) => Text(
         color: color,
       ),
     );
-

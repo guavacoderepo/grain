@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
+import 'package:iconly/iconly.dart';
 
 input(ctx, {String hint = "", int x = 1}) => TextField(
       controller: ctx,
@@ -18,7 +19,6 @@ input(ctx, {String hint = "", int x = 1}) => TextField(
           contentPadding: const EdgeInsets.only(left: 20, right: 20, top: 5),
           hintText: hint),
     );
-
 
 TextField textField(hint, {TextInputType keyboard = TextInputType.text}) =>
     TextField(
@@ -95,26 +95,30 @@ TextField passwordField(hint, bool obscure, Function onClick) => TextField(
 TextField searchField(hint, {TextInputType keyboard = TextInputType.text}) =>
     TextField(
       decoration: InputDecoration(
-          prefixIcon: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-                color: lightgrey,
-                size: 35,
-              )),
-          hintStyle: TextStyle(color: hintTextColor),
-          contentPadding:
-              const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            gapPadding: 16,
-            borderSide: BorderSide(color: lightGrey),
+        prefixIcon: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            IconlyLight.search,
+            color: lightgrey,
+            size: 20,
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            gapPadding: 16,
-            borderSide: BorderSide(color: lightGrey),
-          ),
-          hintText: hint),
+        ),
+        fillColor: light,
+        filled: true,
+        hintStyle: TextStyle(color: hintTextColor, fontSize: 10),
+        contentPadding: const EdgeInsets.all(5),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          gapPadding: 10,
+          borderSide: BorderSide(color: bgGrey),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          gapPadding: 10,
+          borderSide: BorderSide(color: bgGrey),
+        ),
+        hintText: hint,
+      ),
       keyboardType: keyboard,
     );
+
