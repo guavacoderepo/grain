@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
@@ -14,19 +16,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
+  int textIndex = 0;
+  List headerText = [
+    "Revolutionize Your Harvest",
+    "Maximize your profit and minimize lost",
+    "Keep farms close to facility owners"
+  ];
+
+// control text change
+  @override
+  void initState() {
+    Timer.periodic(const Duration(seconds: 4), (timer) {
+      setState(() {
+        textIndex = textIndex + 1;
+        if (textIndex > headerText.length - 1) {
+          textIndex = 0;
+        }
+      });
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: light,
         title: h500("Hi there! ", 16),
-        leading: Icon(Icons.menu, color: dark),
+        // leading: Icon(Icons.menu, color: dark),
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10, top: 20),
             child: Badge(
               child: Icon(
-                Icons.notifications_none_rounded,
+                IconlyLight.notification,
                 color: dark,
               ),
             ),
@@ -56,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        h500("Revolutionize Your Harvest", 18, color: light),
+                        h500(headerText[textIndex], 17, color: light),
                         h500("Get started today!", 12, color: dark)
                       ],
                     ),
@@ -71,6 +97,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+
             // marquee section
             Row(
               children: [
@@ -86,18 +113,20 @@ class _HomePageState extends State<HomePage> {
                     child: Marquee(
                       style: const TextStyle(fontSize: 12),
                       text:
-                          "Rice: #4,555.9, Beans: #10,999.3, White Maize: #3,888.9, Red Maize: #5,777.9,",
+                          "Rice: #4,555.9,  Beans: #10,999.3,  White Maize: #3,888.9,  Red Maize: #5,777.9,",
                     ),
                   ),
                 )
               ],
             ),
+
             vertical(10),
             // main content body section
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: h500("Promotion Ads", 15, color: appColor),
             ),
+
             // crop harvest section
             vertical(10),
             Padding(
@@ -166,15 +195,34 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(IconlyLight.home), label: "Home"),
-        BottomNavigationBarItem(
-            icon: Icon(IconlyLight.ticket), label: "Services"),
-        BottomNavigationBarItem(
-            icon: Icon(IconlyLight.bookmark), label: "Bookmark"),
-        BottomNavigationBarItem(
-            icon: Icon(IconlyLight.profile), label: "Profile"),
-      ]),
+
+// float action buttom
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: appColor,
+        child: Icon(
+          IconlyLight.upload,
+          color: light,
+        ),
+        onPressed: () {},
+      ),
+
+// bottom nav section
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: appColor,
+        unselectedItemColor: lightGrey,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+        currentIndex: currentIndex,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(IconlyLight.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(IconlyLight.ticket), label: "Services"),
+          BottomNavigationBarItem(
+              icon: Icon(IconlyLight.bookmark), label: "Bookmark"),
+          BottomNavigationBarItem(
+              icon: Icon(IconlyLight.profile), label: "Profile"),
+        ],
+      ),
     );
   }
 

@@ -2,21 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 
 customeAppBar(title) => AppBar(
-      backgroundColor: deepGreen,
+      backgroundColor: appColor,
       elevation: 0,
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
         ),
       ),
-      // actions: [
-      //   Padding(
-      //     padding: EdgeInsets.only(left: 20),
-      //     child: IconButton(
-      //       onPressed: () {},
-      //       icon: Icon(Icons.search),
-      //     ),
-      //   )
-      // ],
     );
