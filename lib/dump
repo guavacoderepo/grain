@@ -45,3 +45,45 @@ ListView.separated(
 
 
 
+
+        Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // Featured Section
+                  h500("Featured Section", 18, color: appColor),
+                  vertical(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      h500("Crop & seeds", 16),
+                      InkWell(
+                        child: h500("See all", 11, color: appColor),
+                      )
+                    ],
+                  ),
+                  LimitedBox(
+                    maxHeight: 20,
+                    child: GridView.itemBuilder(
+                      crossAxisCount: 6,
+                      mainAxisSpacing: 4,
+                      crossAxisSpacing: 4,
+                      children: [
+                        Container(
+                          width: 400,
+                          height: 100,
+                          color: appColor,
+                        )
+                      ],
+                    ),
+                  ),
+                  h500("Crop & seeds", 16),
+                  // more contents here
+                ],
+              ),
+            ),
+          ),

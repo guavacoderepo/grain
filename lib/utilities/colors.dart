@@ -13,3 +13,4 @@ Color dark = const Color(0xff333333);
 Color light = const Color(0xffffffff);
 Color lightDark = const Color(0XFF4D4D4D).withOpacity(0.7);
 Color hintTextColor = const Color(0XFF9B959F);
+Color redcolor = Colors.red;
