@@ -32,7 +32,7 @@ class _FarmerUploadState extends State<FarmerUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar("Upload Farm Details"),
+      appBar: customeAppBar(context,"Upload Farm Details"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(

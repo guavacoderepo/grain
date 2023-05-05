@@ -31,7 +31,7 @@ class _FacilityUploadState extends State<FacilityUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar("Upload Facility Details"),
+      appBar: customeAppBar(context,"Upload Facility Details"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(

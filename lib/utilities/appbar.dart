@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/input.dart';
-import 'package:iconly/iconly.dart';
 
-customeAppBar(title) => AppBar(
+customeAppBar(context,title) => AppBar(
       backgroundColor: appColor,
       elevation: 0,
       title: Text(
@@ -12,6 +11,7 @@ customeAppBar(title) => AppBar(
           fontSize: 18,
         ),
       ),
+      leading: IconButton(onPressed: ()=> Navigator.pop(context), icon: Icon(Icons.arrow_back_ios_new_rounded)),
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),

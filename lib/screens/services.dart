@@ -14,7 +14,7 @@ class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar("Company Servies"),
+      appBar: customeAppBar(context,"Company Servies"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),

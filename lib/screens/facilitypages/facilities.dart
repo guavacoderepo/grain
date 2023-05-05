@@ -27,7 +27,7 @@ class _StorageFacilitiessCornertate extends State<StorageFacilities> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appbar section
-      appBar: customeAppBar("Storage Facilities"),
+      appBar: customeAppBar(context,"Storage Facilities"),
 
       // body section
       body: Padding(

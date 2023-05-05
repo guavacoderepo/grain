@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:grain/screens/farmerspages/ViewFarm.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:marquee/marquee.dart';
@@ -155,8 +156,8 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 builder: (ctx, index) => buildCard(
-                  "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
-                ),
+                    "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
+                    index),
               ),
             ),
 
@@ -180,15 +181,21 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
               child: DynamicHeightGridView(
-                itemCount: 4,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                builder: (ctx, index) => buildCard(
-                    "https://datacenterlocations.com/wp-content/uploads/2020/10/rack-centre-planned-data-center-nigeria.jpg"),
-              ),
+                  itemCount: 4,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  builder: (ctx, index) => InkWell(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ViewFarm())),
+                        child: buildCard(
+                            "https://datacenterlocations.com/wp-content/uploads/2020/10/rack-centre-planned-data-center-nigeria.jpg",
+                            index),
+                      )),
             ),
 
             // add sections here
@@ -226,7 +233,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  buildCard(img) => Container(
+  buildCard(img, index) => Container(
         decoration: BoxDecoration(
             border: Border.all(color: bgGrey),
             borderRadius: BorderRadius.circular(5)),
@@ -237,9 +244,12 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width: double.infinity,
               height: 100,
-              child: Image.network(
-                img,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: index.toString(),
+                child: Image.network(
+                  img,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Container(
@@ -251,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   h500("Groundnut seeds", 10),
                   vertical(5),
-                  h600("#140,000/tonne", 8),
+                  h600("#140,000/t", 8),
                   vertical(5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

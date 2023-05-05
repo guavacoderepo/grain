@@ -17,7 +17,7 @@ class _ViewFacilitiesState extends State<ViewFacilities> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar("${widget.name}, ${widget.location}"),
+      appBar: customeAppBar(context, "${widget.name}, ${widget.location}"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
