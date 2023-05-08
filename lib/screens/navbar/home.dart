@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                         child: buildCard(
                             "https://datacenterlocations.com/wp-content/uploads/2020/10/rack-centre-planned-data-center-nigeria.jpg",
                             index),
-                      )),
+                      ),),
             ),
 
             // add sections here
