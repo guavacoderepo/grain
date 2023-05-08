@@ -3,18 +3,18 @@ import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import '../utilities/appbar.dart';
 
-class Services extends StatefulWidget {
-  const Services({super.key});
+class Notifications extends StatefulWidget {
+  const Notifications({super.key});
 
   @override
-  State<Services> createState() => _ServicesState();
+  State<Notifications> createState() => _NotificationsState();
 }
 
-class _ServicesState extends State<Services> {
+class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar(context,"Company Servies"),
+      appBar: customeAppBar(context,"Notifications"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),

@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:grain/models/facilityclass.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
@@ -20,7 +19,6 @@ class _FacilityUploadState extends State<FacilityUpload> {
   PlatformFile? file;
   String? filePath = "";
   String? fileName = "";
-
 
   final TextEditingController _number = TextEditingController();
   final TextEditingController _location = TextEditingController();
@@ -43,8 +41,8 @@ class _FacilityUploadState extends State<FacilityUpload> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 20),
 
+                    const SizedBox(height: 10),
                     h300("Phone Number", 12),
                     input(_number, hint: "Hint: 09087569809"),
                     const SizedBox(height: 10),

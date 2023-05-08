@@ -18,6 +18,7 @@ font3(text, {Color color = const Color.fromARGB(255, 99, 100, 99)}) => Text(
 font4(text, {Color color = const Color(0xff223D0D)}) => Text(
       text,
       style: TextStyle(fontSize: 20, color: color, fontWeight: FontWeight.w600),
+      textAlign: TextAlign.left,
     );
 
 // new design fonts
@@ -53,7 +54,7 @@ Text h300(text, double size, {Color color = Colors.black}) => Text(
 // fontweight 400
 Text h400(text, double size, {Color color = Colors.black}) => Text(
       text,
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.left,
       style: TextStyle(
         fontSize: size,
         fontWeight: FontWeight.w400,
@@ -82,6 +83,16 @@ Text h500(text, double size, {Color color = Colors.black}) => Text(
       ),
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
+    );
+
+// fontweight 500
+Text h500animation(text, double size, {Color color = Colors.black}) => Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: FontWeight.w500,
+        color: color,
+      ),
     );
 
 // fontweight 600

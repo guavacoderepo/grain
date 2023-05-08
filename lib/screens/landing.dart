@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grain/models/facilityclass.dart';
-import 'package:grain/screens/facilitypages/facilities.dart';
-import 'package:grain/screens/farmerspages/farmersCorner.dart';
-import 'package:grain/screens/services.dart';
+import 'package:grain/screens/navbar/home.dart';
+import 'package:grain/screens/navbar/services.dart';
+import 'package:iconly/iconly.dart';
 import '../utilities/colors.dart';
 
 class LandingPage extends StatefulWidget {
@@ -26,26 +25,28 @@ class _LandingPageState extends State<LandingPage> {
       body: IndexedStack(
         index: _currentIndex,
         children: const [
-          FarmersCorner(),
-          StorageFacilities(),
+          HomePage(),
+          Services(),
+          Services(),
           Services(),
         ],
       ),
 
 // bottom nav
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: deepGreen,
+        selectedItemColor: appColor,
         unselectedItemColor: lightGrey,
-        elevation: 0,
-        showUnselectedLabels: false,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+        currentIndex: _currentIndex,
         items: const [
+          BottomNavigationBarItem(icon: Icon(IconlyLight.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.rice_bowl_outlined), label: "Farmer"),
+              icon: Icon(IconlyLight.ticket), label: "Services"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.house_siding_outlined), label: "Facilities"),
+              icon: Icon(IconlyLight.bookmark), label: "Bookmark"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.design_services_outlined), label: "Services")
+              icon: Icon(IconlyLight.profile), label: "Profile"),
         ],
         onTap: (value) => setState(() => _currentIndex = value),
       ),

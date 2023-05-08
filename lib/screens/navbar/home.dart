@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        h500(headerText[textIndex], 17, color: light),
+                        h500animation(headerText[textIndex], 17, color: light),
                         h500("Get started today!", 12, color: dark)
                       ],
                     ),
@@ -214,22 +214,6 @@ class _HomePageState extends State<HomePage> {
       ),
 
 // bottom nav section
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: appColor,
-        unselectedItemColor: lightGrey,
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        currentIndex: currentIndex,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(IconlyLight.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(IconlyLight.ticket), label: "Services"),
-          BottomNavigationBarItem(
-              icon: Icon(IconlyLight.bookmark), label: "Bookmark"),
-          BottomNavigationBarItem(
-              icon: Icon(IconlyLight.profile), label: "Profile"),
-        ],
-      ),
     );
   }
 }
