@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:grain/models/farmersClass.dart';
 import 'package:grain/utilities/appbar.dart';
@@ -32,7 +31,7 @@ class _FarmerUploadState extends State<FarmerUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar(context,"Upload Farm Details"),
+      appBar: customeAppBar(context, "Upload Farm Details"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(

@@ -6,6 +6,7 @@ import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:marquee/marquee.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import '../../utilities/carddesign.dart';
 import '../../utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
 
@@ -156,8 +157,8 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 builder: (ctx, index) => buildCard(
-                    "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
-                    index),
+                  "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
+                ),
               ),
             ),
 
@@ -181,21 +182,20 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
               child: DynamicHeightGridView(
-                  itemCount: 4,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  builder: (ctx, index) => InkWell(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ViewFarm())),
-                        child: buildCard(
-                            "https://datacenterlocations.com/wp-content/uploads/2020/10/rack-centre-planned-data-center-nigeria.jpg",
-                            index),
-                      ),),
+                itemCount: 4,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                builder: (ctx, index) => InkWell(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewFarm())),
+                  child: buildCard(
+                    "https://datacenterlocations.com/wp-content/uploads/2020/10/rack-centre-planned-data-center-nigeria.jpg",
+                  ),
+                ),
+              ),
             ),
 
             // add sections here
@@ -232,48 +232,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  buildCard(img, index) => Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: bgGrey),
-            borderRadius: BorderRadius.circular(5)),
-        // height: 300,
-        // color: appColor,
-        child: Column(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: 100,
-              child: Hero(
-                tag: index.toString(),
-                child: Image.network(
-                  img,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              padding:
-                  const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  h500("Groundnut seeds", 10),
-                  vertical(5),
-                  h600("#140,000/t", 8),
-                  vertical(5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      h500("⟟ Abia", 10),
-                      h500("4-June", 8),
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      );
 }
