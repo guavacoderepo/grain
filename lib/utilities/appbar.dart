@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/input.dart';
 
-customeAppBar(context,title) => AppBar(
+customeAppBar(context, title) => AppBar(
       backgroundColor: appColor,
       elevation: 0,
       title: Text(
@@ -11,12 +11,14 @@ customeAppBar(context,title) => AppBar(
           fontSize: 18,
         ),
       ),
-      leading: IconButton(onPressed: ()=> Navigator.pop(context), icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-      
+      leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded)),
     );
 
 class AppBarContent extends StatelessWidget {
-  const AppBarContent({super.key});
+  var title, search;
+ AppBarContent(this.title,this.search, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +37,16 @@ class AppBarContent extends StatelessWidget {
                 color: Colors.white,
                 onPressed: () {},
               ),
-              const Text(
-                'Farmers Corner',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                title,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: searchField("Corn, maize, beans , rice seeds etc"),
+          child: searchField(search),
         )
       ],
     );

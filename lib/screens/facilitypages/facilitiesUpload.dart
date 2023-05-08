@@ -6,6 +6,7 @@ import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:grain/utilities/input.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:grain/utilities/spacer.dart';
 
 class FacilityUpload extends StatefulWidget {
   const FacilityUpload({super.key});
@@ -20,18 +21,16 @@ class _FacilityUploadState extends State<FacilityUpload> {
   String? filePath = "";
   String? fileName = "";
 
-  final TextEditingController _name = TextEditingController();
-  final TextEditingController _crop = TextEditingController();
+
   final TextEditingController _number = TextEditingController();
   final TextEditingController _location = TextEditingController();
   final TextEditingController _size = TextEditingController();
-  final TextEditingController _date = TextEditingController();
   final TextEditingController _des = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar(context,"Upload Facility Details"),
+      appBar: customeAppBar(context, "Upload Facility Details"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(
@@ -45,21 +44,18 @@ class _FacilityUploadState extends State<FacilityUpload> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-                    font1("Company's Name"),
-                    input(_name, hint: "Hint: Olams Nigeria Limited"),
 
-                    const SizedBox(height: 10),
-                    font1("Phone Number"),
+                    h300("Phone Number", 12),
                     input(_number, hint: "Hint: 09087569809"),
                     const SizedBox(height: 10),
-                    font1("Facility Location"),
+                    h300("Facility Location", 12),
                     input(_location, hint: "Hint: Uto Lagos state"),
 
                     const SizedBox(height: 10),
-                    font1("Storage Capacity"),
+                    h300("Storage Capacity", 12),
                     input(_size, hint: "Hint: 300tones"),
                     const SizedBox(height: 10),
-                    font1("Description"),
+                    h300("Description", 12),
                     input(_des, hint: "Enter it Description", x: 5),
                     const SizedBox(height: 10),
 
@@ -80,7 +76,8 @@ class _FacilityUploadState extends State<FacilityUpload> {
                                 : Image.file(File(filePath!)),
                           ),
                         ),
-                        font3("Choose image")
+                        horizontal(10),
+                        h300("Choose image", 13)
                       ],
                     ),
                     const SizedBox(height: 20),
@@ -91,29 +88,11 @@ class _FacilityUploadState extends State<FacilityUpload> {
                       child: TextButton(
                         onPressed: () async {
 // add to farms
-                          setState(() {
-                            addfacilty(
-                              _name.text,
-                              _location.text,
-                              DateTime.now(),
-                              _number.text,
-                              _des.text,
-                              _size.text,
-                            );
-                          });
-// post farm
 
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: font3("Facility uploaded successfully",
-                                  color: Colors.white),
-                            ),
-                          );
-                          Navigator.pop(context);
 // end of function
                         },
                         child: font1("Post", color: Colors.white),
-                        style: TextButton.styleFrom(backgroundColor: deepGreen),
+                        style: TextButton.styleFrom(backgroundColor: appColor),
                       ),
                     ),
                     const SizedBox(
