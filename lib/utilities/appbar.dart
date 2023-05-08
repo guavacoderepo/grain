@@ -12,17 +12,7 @@ customeAppBar(context,title) => AppBar(
         ),
       ),
       leading: IconButton(onPressed: ()=> Navigator.pop(context), icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.bookmark_border,
-            ),
-          ),
-        )
-      ],
+      
     );
 
 class AppBarContent extends StatelessWidget {

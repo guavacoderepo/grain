@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:grain/models/farmersClass.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
@@ -20,7 +19,6 @@ class _FarmerUploadState extends State<FarmerUpload> {
   String? filePath = "";
   String? fileName = "";
 
-  final TextEditingController _name = TextEditingController();
   final TextEditingController _crop = TextEditingController();
   final TextEditingController _number = TextEditingController();
   final TextEditingController _location = TextEditingController();
@@ -45,26 +43,24 @@ class _FarmerUploadState extends State<FarmerUpload> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-                    font1("Full Name"),
-                    input(_name, hint: "Hint: Abba Sadi"),
-                    const SizedBox(height: 10),
-                    font1("Crop Spicie"),
+
+                    h300("Crop Spicie", 13),
                     input(_crop, hint: "Hint: Red Maize"),
                     const SizedBox(height: 10),
-                    font1("Phone Number"),
+                    h300("Phone Number", 13),
                     input(_number, hint: "Hint: 09087569809"),
                     const SizedBox(height: 10),
-                    font1("Location"),
+                    h300("Location", 13),
                     input(_location, hint: "Hint: Gwarimpa Abuja"),
                     const SizedBox(height: 10),
-                    font1("Planting Date"),
+                    h300("Planting Date", 13),
                     input(_date, hint: "Hint: dd/mm/yyyy"),
                     const SizedBox(height: 10),
-                    font1("Farm Size"),
+                    h300("Farm Size", 13),
                     input(_size, hint: "Hint: 23sqKm"),
                     const SizedBox(height: 10),
-                    font1("Description"),
-                    input(_des, hint: "Enter it here", x: 5),
+                    h300("Description", 13),
+                    input(_des, hint: "Enter it here", x: 4),
                     const SizedBox(height: 10),
 
 // upolad image
@@ -106,36 +102,10 @@ class _FarmerUploadState extends State<FarmerUpload> {
                             return;
                           }
 
-// add to farms
-                          setState(() {
-                            addFarms(
-                              _name.text,
-                              _location.text,
-                              DateTime.now(),
-                              _number.text,
-                              DateTime.utc(
-                                int.parse(splitdate[2]),
-                                int.parse(splitdate[1]),
-                                int.parse(splitdate[0]),
-                              ),
-                              _crop.text,
-                              _des.text,
-                              _size.text,
-                            );
-                          });
-// post farm
-
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: font3("Farm uploaded successfully",
-                                  color: Colors.white),
-                            ),
-                          );
-                          Navigator.pop(context);
 // end of function
                         },
                         child: font1("Post", color: Colors.white),
-                        style: TextButton.styleFrom(backgroundColor: deepGreen),
+                        style: TextButton.styleFrom(backgroundColor: appColor),
                       ),
                     ),
                     const SizedBox(
@@ -168,7 +138,7 @@ class _FarmerUploadState extends State<FarmerUpload> {
         // User canceled the picker
       }
     } catch (e) {
-      print(e);
+      // print(e);
     }
   }
 }

@@ -8,7 +8,7 @@ input(ctx, {String hint = "", int x = 1}) => TextField(
       decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: deepGreen.withOpacity(0.5),
+              color: appColor.withOpacity(0.5),
             ),
           ),
           enabledBorder: OutlineInputBorder(
@@ -17,7 +17,8 @@ input(ctx, {String hint = "", int x = 1}) => TextField(
             ),
           ),
           contentPadding: const EdgeInsets.only(left: 20, right: 20, top: 5),
-          hintText: hint),
+          hintText: hint,
+          hintStyle: TextStyle(color: lightGrey, fontSize: 12)),
     );
 
 TextField textField(hint, {TextInputType keyboard = TextInputType.text}) =>
@@ -121,4 +122,3 @@ TextField searchField(hint, {TextInputType keyboard = TextInputType.text}) =>
       ),
       keyboardType: keyboard,
     );
-

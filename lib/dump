@@ -87,3 +87,17 @@ ListView.separated(
               ),
             ),
           ),
+
+
+
+          actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.bookmark_border,
+            ),
+          ),
+        )
+      ],
