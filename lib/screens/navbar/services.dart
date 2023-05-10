@@ -45,7 +45,7 @@ class _ServicesState extends State<Services> {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           builder: (ctx, index) => Container(
-              height: MediaQuery.of(context).size.height * 0.28,
+              height: MediaQuery.of(context).size.height * 0.26,
               width: MediaQuery.of(context).size.width * 0.3,
               decoration: BoxDecoration(
                   color: appColor,

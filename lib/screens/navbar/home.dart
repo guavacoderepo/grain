@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                     child: Marquee(
                       style: const TextStyle(fontSize: 12),
                       text:
-                          "Rice: #4,555.9,  Beans: #10,999.3,  White Maize: #3,888.9,  Red Maize: #5,777.9,",
+                          "Rice: #4,555.9,  Beans: #10,999.3,  White Maize: #3,888.9,  Red Maize: #5,777.9,  ",
                     ),
                   ),
                 )

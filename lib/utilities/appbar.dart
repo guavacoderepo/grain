@@ -13,12 +13,13 @@ customeAppBar(context, title) => AppBar(
       ),
       leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios_new_rounded)),
+          icon: const Icon(Icons.arrow_back_rounded)),
     );
 
 class AppBarContent extends StatelessWidget {
-  var title, search;
- AppBarContent(this.title,this.search, {super.key});
+  dynamic title, search;
+
+  AppBarContent(this.title, this.search, {super.key});
 
   @override
   Widget build(BuildContext context) {
