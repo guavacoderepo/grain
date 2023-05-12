@@ -13,8 +13,8 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  bool _farmer = true;
-  bool _facilties = false;
+  final bool _farmer = true;
+  final bool _facilties = false;
 
   String? dropdownvalue = 'Farmer';
 
