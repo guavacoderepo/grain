@@ -24,7 +24,7 @@ input(ctx, {String hint = "", int x = 1}) => TextField(
 TextField textField(hint, {TextInputType keyboard = TextInputType.text}) =>
     TextField(
       decoration: InputDecoration(
-          hintStyle: TextStyle(color: hintTextColor),
+          hintStyle: TextStyle(color: hintTextColor, fontSize: 12),
           contentPadding:
               const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
           focusedBorder: OutlineInputBorder(
@@ -43,7 +43,7 @@ TextField textField(hint, {TextInputType keyboard = TextInputType.text}) =>
 
 TextField passwordField(hint, bool obscure, Function onClick) => TextField(
       decoration: InputDecoration(
-          hintStyle: TextStyle(color: hintTextColor),
+          hintStyle: TextStyle(color: hintTextColor, fontSize: 12),
           contentPadding:
               const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
           focusedBorder: OutlineInputBorder(
@@ -66,32 +66,6 @@ TextField passwordField(hint, bool obscure, Function onClick) => TextField(
       obscuringCharacter: "*",
     );
 
-// pinCode(context, pinctx) => PinCodeTextField(
-//       appContext: context,
-//       controller: pinctx,
-//       length: 4,
-//       cursorHeight: 71,
-//       enableActiveFill: true,
-//       textStyle: const TextStyle(
-//         fontSize: 20,
-//         fontWeight: FontWeight.w600,
-//       ),
-//       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-//       pinTheme: PinTheme(
-//         shape: PinCodeFieldShape.box,
-//         borderRadius: BorderRadius.circular(4),
-//         borderWidth: 1,
-//         fieldWidth: 71,
-//         fieldHeight: 71,
-//         activeColor: lightGrey,
-//         inactiveColor: lightGrey,
-//         selectedColor: lightGrey,
-//         selectedFillColor: transparent,
-//         activeFillColor: transparent,
-//         inactiveFillColor: transparent,
-//       ),
-//       onChanged: (v) {},
-//     );
 
 TextField searchField(hint, {TextInputType keyboard = TextInputType.text}) =>
     TextField(

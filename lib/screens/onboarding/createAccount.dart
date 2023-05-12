@@ -51,23 +51,23 @@ class _CreateAccountState extends State<CreateAccount> {
                     vertical(15),
 // input section
 // name section
-                    h400("Name", 14, color: lightGrey),
+                    h300("Name", 14, color: lightGrey),
                     vertical(4),
                     textField("Enter Name"),
                     vertical(15),
 
 // email section
-                    h400("Email", 14, color: lightGrey),
+                    h300("Email", 14, color: lightGrey),
                     vertical(4),
                     textField("Enter email address"),
                     vertical(15),
 // phone number section
-                    h400("Phone Number", 14, color: lightGrey),
+                    h300("Phone Number", 14, color: lightGrey),
                     vertical(4),
                     textField("Enter phone number"),
                     vertical(15),
 // password section
-                    h400("Password", 14, color: lightGrey),
+                    h300("Password", 14, color: lightGrey),
                     vertical(4),
                     passwordField("Enter Password", true, () {}),
 
