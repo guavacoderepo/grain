@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grain/models/farmersClass.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/carddesign.dart';
 import 'package:grain/utilities/colors.dart';
@@ -12,11 +11,9 @@ class StorageFacilities extends StatefulWidget {
 }
 
 class _StorageFacilitiessCornertate extends State<StorageFacilities> {
-  Future<List<FarmersData>>? farmdate;
 
   @override
   void initState() {
-    farmdate = getfarmers();
     super.initState();
   }
 

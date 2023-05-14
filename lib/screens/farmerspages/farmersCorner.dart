@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grain/models/farmersClass.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/carddesign.dart';
 import 'package:grain/utilities/colors.dart';
@@ -12,11 +11,10 @@ class FarmersCorner extends StatefulWidget {
 }
 
 class _FarmersCornersCornertate extends State<FarmersCorner> {
-  Future<List<FarmersData>>? farmdate;
+
 
   @override
   void initState() {
-    farmdate = getfarmers();
     super.initState();
   }
 
