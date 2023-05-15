@@ -1,16 +1,16 @@
 import 'package:grain/constants/url.dart';
 import 'package:grain/datamodels/userModel.dart';
-// import 'package:embraceher/utils/sharepref.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import '../utilities/sharepref.dart';
 
 // call user function
 Future users(context) async {
   var client = http.Client();
 
-  // String token = await retriveToken();
+  String token = await retriveToken();
 
   try {
     var response = await client.get(Uri.parse(baseurl + getme), headers: {

@@ -1,49 +1,49 @@
 import 'dart:convert';
 
 class UserModel {
-    String fullName;
-    String email;
-    dynamic tel;
-    String category;
-    bool isNotification;
-    List<dynamic> bookmark;
-    List<dynamic> post;
-    dynamic imgUrl;
-    dynamic address;
-    String password;
-    bool isActive;
-    dynamic resetPasswordToken;
-    dynamic resetPasswordExpire;
-    String id;
-    DateTime createdAt;
-    DateTime updatedAt;
-    int v;
+  String? fullName;
+  String? email;
+  dynamic tel;
+  String? category;
+  bool? isNotification;
+  List<dynamic>? bookmark;
+  List<dynamic>? post;
+  dynamic imgUrl;
+  dynamic address;
+  String? password;
+  bool? isActive;
+  dynamic resetPasswordToken;
+  dynamic resetPasswordExpire;
+  String? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
 
-    UserModel({
-        required this.fullName,
-        required this.email,
-        required this.tel,
-        required this.category,
-        required this.isNotification,
-        required this.bookmark,
-        required this.post,
-        required this.imgUrl,
-        required this.address,
-        required this.password,
-        required this.isActive,
-        required this.resetPasswordToken,
-        required this.resetPasswordExpire,
-        required this.id,
-        required this.createdAt,
-        required this.updatedAt,
-        required this.v,
-    });
+  UserModel({
+    this.fullName,
+    this.email,
+    this.tel,
+    this.category,
+    this.isNotification,
+    this.bookmark,
+    this.post,
+    this.imgUrl,
+    this.address,
+    this.password,
+    this.isActive,
+    this.resetPasswordToken,
+    this.resetPasswordExpire,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+  });
 
-    factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
+  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
 
-    String toJson() => json.encode(toMap());
+  String toJson() => json.encode(toMap());
 
-    factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
+  factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
         fullName: json["fullName"],
         email: json["email"],
         tel: json["tel"],
@@ -61,16 +61,16 @@ class UserModel {
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
-    );
+      );
 
-    Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() => {
         "fullName": fullName,
         "email": email,
         "tel": tel,
         "category": category,
         "isNotification": isNotification,
-        "bookmark": List<dynamic>.from(bookmark.map((x) => x)),
-        "post": List<dynamic>.from(post.map((x) => x)),
+        "bookmark": List<dynamic>.from(bookmark!.map((x) => x)),
+        "post": List<dynamic>.from(post!.map((x) => x)),
         "imgUrl": imgUrl,
         "address": address,
         "password": password,
@@ -78,8 +78,8 @@ class UserModel {
         "resetPasswordToken": resetPasswordToken,
         "resetPasswordExpire": resetPasswordExpire,
         "_id": id,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt!.toIso8601String(),
+        "updatedAt": updatedAt!.toIso8601String(),
         "__v": v,
-    };
+      };
 }
