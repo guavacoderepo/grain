@@ -7,7 +7,7 @@ import 'dart:convert';
 class Authentication {
   var client = http.Client();
 
-  Future registerUser(name, email, username, token, pwd) async {
+  Future registerUser(name, email, tel, pwd, category) async {
     // set uli string
     final Uri url = Uri.parse(baseurl + register);
 
@@ -20,8 +20,8 @@ class Authentication {
         body: jsonEncode({
           "fullName": name,
           "email": email,
-          "username": username,
-          "token": token,
+          "tel": tel,
+          "category": category,
           "password": pwd
         }),
       );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../datamodels/userModel.dart';
+import '../../models/auth.dart';
 import '../../models/user.dart';
 import '../../utilities/colors.dart';
 import '../../utilities/font.dart';
@@ -27,12 +28,12 @@ class _CreateAccountState extends State<CreateAccount> {
   final bool _farmer = true;
   final bool _facilties = false;
 
-  String? dropdownvalue = 'Farmer';
+  String? _category = 'farmer';
 
   // List of items in our dropdown menu
   var items = [
-    'Farmer',
-    'Facility Owner',
+    'farmer',
+    'facility owner',
   ];
 
   @override
@@ -70,7 +71,7 @@ class _CreateAccountState extends State<CreateAccount> {
 // email section
                     h300("Email", 14, color: lightGrey),
                     vertical(4),
-                    textField("Enter email address",_email),
+                    textField("Enter email address", _email),
                     vertical(15),
 // phone number section
                     h300("Phone Number", 14, color: lightGrey),
@@ -86,7 +87,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
                     DropdownButton(
                       // Initial Value
-                      value: dropdownvalue,
+                      value: _category,
 
                       // Down Arrow Icon
                       icon: const Icon(Icons.keyboard_arrow_down),
@@ -102,14 +103,18 @@ class _CreateAccountState extends State<CreateAccount> {
                       // change button value to selected value
                       onChanged: (String? newValue) {
                         setState(() {
-                          dropdownvalue = newValue!;
+                          _category = newValue!;
                         });
                       },
                     ),
                     vertical(80),
 // submittion button
-                    submitbtn(context, "Create Account", () {
-
+                    submitbtn(context, "Create Account", () async {
+                      print("submitting");
+                      Authentication()
+                          .registerUser(_name.text, _email.text, _phone.text,
+                              _pwd.text, _category)
+                          .then((auth) => onRegister(auth));
                     }),
                     vertical(24),
 // already have an account
@@ -130,8 +135,10 @@ class _CreateAccountState extends State<CreateAccount> {
       ),
     );
   }
+
   // onregister handler function
   onRegister(auth) {
+    print("submitting...........");
     if (auth["status"] == false) {
       print(auth["data"].toString());
       print(false);
@@ -148,7 +155,6 @@ class _CreateAccountState extends State<CreateAccount> {
     Provider.of<User>(context, listen: false).setUser(user);
     // save user token in sharepreff
     saveToken(auth["token"]);
-
 
     // regiatration successful snackbar
     print("successful...");

@@ -1,11 +1,13 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:grain/datamodels/userModel.dart';
+import 'package:grain/models/user.dart';
 import 'package:grain/screens/farmerspages/ViewFarm.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:marquee/marquee.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:provider/provider.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   List headerText = [
     "Revolutionize Your Harvest",
     "Maximize your profit and minimize lost",
-    "Keep farms close to facility owners"
+    "Keep farmers close to facility owners"
   ];
 
 // control text change
@@ -43,10 +45,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    UserModel user = Provider.of<User>(context).user;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: light,
-        title: h500("Hi there! ", 16),
+        title: h500("Hi ${user.fullName}!", 16),
         // leading: Icon(Icons.menu, color: dark),
         automaticallyImplyLeading: false,
         actions: [
