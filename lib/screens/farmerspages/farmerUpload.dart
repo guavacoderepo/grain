@@ -1,10 +1,15 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:grain/datamodels/userModel.dart';
+import 'package:grain/models/uploads.dart';
+import 'package:grain/models/user.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:grain/utilities/input.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class FarmerUpload extends StatefulWidget {
   const FarmerUpload({super.key});
@@ -15,6 +20,8 @@ class FarmerUpload extends StatefulWidget {
 
 class _FarmerUploadState extends State<FarmerUpload> {
   String? uploadImgPath = "";
+  DateTime? pdate;
+  DateTime? hdate;
   PlatformFile? file;
   String? filePath = "";
   String? fileName = "";
@@ -24,10 +31,13 @@ class _FarmerUploadState extends State<FarmerUpload> {
   final TextEditingController _location = TextEditingController();
   final TextEditingController _size = TextEditingController();
   final TextEditingController _date = TextEditingController();
+  final TextEditingController _hdate = TextEditingController();
   final TextEditingController _des = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    UserModel user = Provider.of<User>(context).user;
+
     return Scaffold(
       appBar: customeAppBar(context, "Upload Farm Details"),
       body: GestureDetector(
@@ -53,11 +63,58 @@ class _FarmerUploadState extends State<FarmerUpload> {
                     h300("Location", 13),
                     input(_location, hint: "Hint: Gwarimpa Abuja"),
                     const SizedBox(height: 10),
+// start here
                     h300("Planting Date", 13),
-                    input(_date, hint: "Hint: dd/mm/yyyy"),
+                    dateField(
+                      "Hint: dd/mm/yyyy",
+                      _date,
+                      () async {
+                        DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2101));
+
+                        if (pickedDate != null) {
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+
+                          setState(() {
+                            _date.text = formattedDate;
+                            pdate = pickedDate;
+                          });
+                        }
+                      },
+                    ),
+
                     const SizedBox(height: 10),
                     h300("Farm Size", 13),
                     input(_size, hint: "Hint: 23sqKm"),
+// start here
+                    const SizedBox(height: 10),
+                    h300("Harvest Date", 13),
+                    dateField(
+                      "Hint: dd/mm/yyyy",
+                      _hdate,
+                      () async {
+                        DateTime? pickedDate1 = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2101));
+
+                        if (pickedDate1 != null) {
+                          String formattedDate1 =
+                              DateFormat('yyyy-MM-dd').format(pickedDate1);
+
+                          setState(() {
+                            _hdate.text = formattedDate1;
+                            hdate = pickedDate1;
+                          });
+                        }
+                      },
+                    ),
+// end date here
                     const SizedBox(height: 10),
                     h300("Description", 13),
                     input(_des, hint: "Enter it here", x: 4),
@@ -90,18 +147,31 @@ class _FarmerUploadState extends State<FarmerUpload> {
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () async {
-                          var splitdate = _date.text.split("/");
-
-                          if (splitdate.length != 3) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: font3("check date formate",
-                                    color: Colors.white),
-                              ),
-                            );
+                          if (_crop.text.isEmpty ||
+                              _des.text.isEmpty ||
+                              _date.text.isEmpty ||
+                              _hdate.text.isEmpty ||
+                              _location.text.isEmpty ||
+                              _number.text.isEmpty ||
+                              _size.text.isEmpty) {
+                            print("empty field");
                             return;
                           }
-
+                          print(_crop.text);
+                          uploadFarm(
+                                  user.fullName,
+                                  _crop.text,
+                                  pdate!,
+                                  _location.text,
+                                  _size.text,
+                                  _des.text,
+                                  user.id,
+                                  _number.text,
+                                  hdate!,
+                                  fileName)
+                              .then((value) {
+                            print(value.toString());
+                          });
 // end of function
                         },
                         child: font1("Post", color: Colors.white),

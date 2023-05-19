@@ -7,6 +7,7 @@ import 'package:grain/screens/facilitypages/facilities.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:grain/utilities/routers.dart';
+import 'package:intl/intl.dart';
 import 'package:marquee/marquee.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -176,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                       data[index].name,
                       "Size: ${data[index].farmSize}",
                       data[index].location,
-                      "${data[index].createdAt!.day.toString()}/${data[index].createdAt!.month.toString()}/${data[index].createdAt!.year.toString()}",
+                      DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
                     ),
                   );
                 },
@@ -219,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                       data[index].name,
                       "Size: ${data[index].farmSize}",
                       data[index].location,
-                      "${data[index].createdAt!.day.toString()}/${data[index].createdAt!.month.toString()}/${data[index].createdAt!.year.toString()}",
+                      DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
                     ),
                   );
                 },

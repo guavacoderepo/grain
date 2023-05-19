@@ -68,6 +68,28 @@ TextField passwordField(hint, bool obscure, ctl, Function onClick) => TextField(
       controller: ctl,
     );
 
+TextField dateField(hint, ctl, Function onClick) => TextField(
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: hintTextColor, fontSize: 12),
+        contentPadding:
+            const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(4),
+          gapPadding: 16,
+          borderSide: BorderSide(color: lightGrey),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(4),
+          gapPadding: 16,
+          borderSide: BorderSide(color: lightGrey),
+        ),
+        hintText: hint,
+      ),
+      readOnly: true,
+      onTap: () => onClick(),
+      controller: ctl,
+    );
+
 TextField searchField(hint, {TextInputType keyboard = TextInputType.text}) =>
     TextField(
       decoration: InputDecoration(
