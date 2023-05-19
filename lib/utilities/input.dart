@@ -21,7 +21,7 @@ input(ctx, {String hint = "", int x = 1}) => TextField(
           hintStyle: TextStyle(color: lightGrey, fontSize: 12)),
     );
 
-TextField textField(hint, {TextInputType keyboard = TextInputType.text}) =>
+TextField textField(hint, ctl, {TextInputType keyboard = TextInputType.text}) =>
     TextField(
       decoration: InputDecoration(
           hintStyle: TextStyle(color: hintTextColor, fontSize: 12),
@@ -39,9 +39,10 @@ TextField textField(hint, {TextInputType keyboard = TextInputType.text}) =>
           ),
           hintText: hint),
       keyboardType: keyboard,
+      controller: ctl,
     );
 
-TextField passwordField(hint, bool obscure, Function onClick) => TextField(
+TextField passwordField(hint, bool obscure, ctl, Function onClick) => TextField(
       decoration: InputDecoration(
           hintStyle: TextStyle(color: hintTextColor, fontSize: 12),
           contentPadding:
@@ -64,8 +65,8 @@ TextField passwordField(hint, bool obscure, Function onClick) => TextField(
           suffixIconColor: lightDark),
       obscureText: obscure,
       obscuringCharacter: "*",
+      controller: ctl,
     );
-
 
 TextField searchField(hint, {TextInputType keyboard = TextInputType.text}) =>
     TextField(

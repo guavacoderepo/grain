@@ -14,6 +14,8 @@ class ResetPwd extends StatefulWidget {
 }
 
 class _ResetPwdState extends State<ResetPwd> {
+  final TextEditingController _pwd = TextEditingController();
+  final TextEditingController _pwd2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -43,13 +45,14 @@ class _ResetPwdState extends State<ResetPwd> {
 // password section
                     h400("New Password", 14, color: lightGrey),
                     vertical(4),
-                    passwordField("Enter  new password", true, () {}),
+                    passwordField("Enter  new password", true, _pwd, () {}),
                     vertical(16),
 
 // confirm password section
                     h400("Confirm Password", 14, color: lightGrey),
                     vertical(4),
-                    passwordField("Enter new password again", true, () {}),
+                    passwordField(
+                        "Enter new password again", true, _pwd2, () {}),
                     vertical(24),
 
 // submittion button

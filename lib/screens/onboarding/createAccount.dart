@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../datamodels/userModel.dart';
+import '../../models/user.dart';
 import '../../utilities/colors.dart';
 import '../../utilities/font.dart';
 import '../../utilities/input.dart';
+import '../../utilities/routers.dart';
+import '../../utilities/sharepref.dart';
 import '../../utilities/spacer.dart';
 import '../../utilities/submitbtn.dart';
+import '../landing.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
@@ -13,6 +19,11 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
+  final TextEditingController _pwd = TextEditingController();
+
   final bool _farmer = true;
   final bool _facilties = false;
 
@@ -53,23 +64,23 @@ class _CreateAccountState extends State<CreateAccount> {
 // name section
                     h300("Name", 14, color: lightGrey),
                     vertical(4),
-                    textField("Enter Name"),
+                    textField("Enter Name", _name),
                     vertical(15),
 
 // email section
                     h300("Email", 14, color: lightGrey),
                     vertical(4),
-                    textField("Enter email address"),
+                    textField("Enter email address",_email),
                     vertical(15),
 // phone number section
                     h300("Phone Number", 14, color: lightGrey),
                     vertical(4),
-                    textField("Enter phone number"),
+                    textField("Enter phone number", _phone),
                     vertical(15),
 // password section
                     h300("Password", 14, color: lightGrey),
                     vertical(4),
-                    passwordField("Enter Password", true, () {}),
+                    passwordField("Enter Password", true, _pwd, () {}),
 
                     vertical(15),
 
@@ -97,7 +108,9 @@ class _CreateAccountState extends State<CreateAccount> {
                     ),
                     vertical(80),
 // submittion button
-                    submitbtn(context, "Create Account", () {}),
+                    submitbtn(context, "Create Account", () {
+
+                    }),
                     vertical(24),
 // already have an account
                     Row(
@@ -116,5 +129,29 @@ class _CreateAccountState extends State<CreateAccount> {
         ),
       ),
     );
+  }
+  // onregister handler function
+  onRegister(auth) {
+    if (auth["status"] == false) {
+      print(auth["data"].toString());
+      print(false);
+      return;
+    }
+
+    // flashBar(context, "success", "User login successful",
+    //     Icons.check_circle_outlined);
+
+    // setting user data
+    UserModel user = auth["data"];
+
+    // set user
+    Provider.of<User>(context, listen: false).setUser(user);
+    // save user token in sharepreff
+    saveToken(auth["token"]);
+
+
+    // regiatration successful snackbar
+    print("successful...");
+    pushandreplace(context, const LandingPage());
   }
 }

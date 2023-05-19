@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grain/screens/splash.dart';
-import 'screens/onboarding/createAccount.dart';
+import 'screens/onboarding/splash 2.dart';
 
 void main() => runApp(
       MaterialApp(

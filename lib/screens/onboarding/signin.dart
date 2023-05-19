@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:grain/screens/onboarding/createAccount.dart';
+import 'package:grain/utilities/routers.dart';
 import '../../utilities/colors.dart';
 import '../../utilities/font.dart';
 import '../../utilities/input.dart';
@@ -14,6 +15,9 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _pwd = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -43,13 +47,13 @@ class _SigninState extends State<Signin> {
 // name section
                     h400("Email or Phone Number", 14, color: lightGrey),
                     vertical(4),
-                    textField("Email or Phone Number"),
+                    textField("Email or Phone Number", _email),
                     vertical(24),
 
 // password section
                     h400("Password", 14, color: lightGrey),
                     vertical(4),
-                    passwordField("Enter Password", true, () {}),
+                    passwordField("Enter Password", true, _pwd, () {}),
                     vertical(16),
 // forgotten password section
                     Align(
@@ -63,13 +67,19 @@ class _SigninState extends State<Signin> {
                     submitbtn(context, "Sign In", () {}),
                     vertical(24),
 // already have an account
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        h500("Don't have an account?", 12, color: lightGrey),
-                        h400(" Sign Up", 12, color: appColor)
-                      ],
+                    InkWell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          h500("Don't have an account?", 12, color: lightGrey),
+                          h400(" Sign Up", 12, color: appColor)
+                        ],
+                      ),
+                      onTap: () => pushandreplace(
+                        context,
+                        const CreateAccount(),
+                      ),
                     )
                   ],
                 ),
