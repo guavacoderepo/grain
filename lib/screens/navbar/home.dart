@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:grain/datamodels/farmersModel.dart';
 import 'package:grain/datamodels/userModel.dart';
 import 'package:grain/models/user.dart';
 import 'package:grain/screens/farmerspages/ViewFarm.dart';
@@ -8,6 +9,7 @@ import 'package:grain/utilities/font.dart';
 import 'package:marquee/marquee.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:provider/provider.dart';
+import '../../models/farmers.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
@@ -152,16 +154,26 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              child: DynamicHeightGridView(
-                itemCount: 4,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                builder: (ctx, index) => buildCard(
-                  "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
-                ),
+              child: FutureBuilder<FarmersModel>(
+                future: famersClass(),
+                builder: (context, s) {
+                  var data = s.data!.data!;
+                  return DynamicHeightGridView(
+                    itemCount: 4,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    builder: (ctx, index) => buildCard(
+                      data[index].imgUrl,
+                      data[index].name,
+                      "Size: ${data[index].farmSize}",
+                      data[index].location,
+                      "${data[index].createdAt!.day.toString()}/${data[index].createdAt!.month.toString()}/${data[index].createdAt!.year.toString()}",
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -184,20 +196,26 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              child: DynamicHeightGridView(
-                itemCount: 4,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                builder: (ctx, index) => InkWell(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewFarm())),
-                  child: buildCard(
-                    "https://datacenterlocations.com/wp-content/uploads/2020/10/rack-centre-planned-data-center-nigeria.jpg",
-                  ),
-                ),
+              child: FutureBuilder<FarmersModel>(
+                future: famersClass(),
+                builder: (context, s) {
+                  var data = s.data!.data!;
+                  return DynamicHeightGridView(
+                    itemCount: 4,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    builder: (ctx, index) => buildCard(
+                      data[index].imgUrl,
+                      data[index].name,
+                      "Size: ${data[index].farmSize}",
+                      data[index].location,
+                      "${data[index].createdAt!.day.toString()}/${data[index].createdAt!.month.toString()}/${data[index].createdAt!.year.toString()}",
+                    ),
+                  );
+                },
               ),
             ),
 

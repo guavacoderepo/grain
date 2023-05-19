@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/spacer.dart';
+import '../../datamodels/farmersModel.dart';
+import '../../models/farmers.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/font.dart';
 
@@ -84,16 +86,25 @@ class _ViewFacilitiesState extends State<ViewFacilities> {
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              child: DynamicHeightGridView(
-                itemCount: 3,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                builder: (ctx, index) => buildCard(
-                  "https://www.agsmovers.com/wp-content/uploads/2018/06/ags-secure-storage-edit.jpg",
-                ),
+              child: FutureBuilder<FarmersModel>(
+                future: famersClass(),
+                builder: (context, s) {
+                  var data = s.data!.data!;
+                  return DynamicHeightGridView(
+                    itemCount: 4,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    builder: (ctx, index) => buildCard(
+                        data[index].imgUrl,
+                        data[index].name,
+                        data[index].farmSize,
+                        data[index].location,
+                        data[index].createdAt.toString()),
+                  );
+                },
               ),
             ),
             vertical(10)

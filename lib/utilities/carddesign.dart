@@ -4,7 +4,7 @@ import 'package:grain/utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
 import 'colors.dart';
 
-buildCard(img) => Container(
+buildCard(img, name, price, loc, date) => Container(
       decoration: BoxDecoration(
           border: Border.all(color: bgGrey),
           borderRadius: BorderRadius.circular(5)),
@@ -27,15 +27,15 @@ buildCard(img) => Container(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                h500("Groundnut seeds", 10),
+                h500(name, 10),
                 vertical(5),
-                h600("#140,000/T", 8),
+                h600(price, 8),
                 vertical(5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    h500("⟟ Abia", 10),
-                    h500("Jun/4/23", 8),
+                    h500("⟟ $loc", 10),
+                    h500(date, 8),
                   ],
                 )
               ],

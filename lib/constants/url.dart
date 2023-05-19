@@ -4,7 +4,7 @@
 String port = "3000";
 String baseurl = "http://192.168.221.22:$port/api/v1/";
 
-String course = "course";
+String famers = "famers";
 
 String getme = "auth/me";
 String register = "auth/register";
