@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:grain/datamodels/farmersModel.dart';
 import 'package:grain/datamodels/userModel.dart';
 import 'package:grain/models/user.dart';
-import 'package:grain/screens/farmerspages/ViewFarm.dart';
+import 'package:grain/screens/facilitypages/facilities.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
+import 'package:grain/utilities/routers.dart';
 import 'package:marquee/marquee.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,10 @@ import '../../models/farmers.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
+
+import '../facilitypages/facilitiesUpload.dart';
+import '../farmerspages/farmerUpload.dart';
+import '../farmerspages/farmersCorner.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -145,6 +150,7 @@ class _HomePageState extends State<HomePage> {
                   h500("Crop & Harvest", 14),
                   InkWell(
                     child: h500("See all", 11, color: appColor),
+                    onTap: () => push(context, const FarmersCorner()),
                   )
                 ],
               ),
@@ -187,6 +193,7 @@ class _HomePageState extends State<HomePage> {
                   h500("Storage facilities", 14),
                   InkWell(
                     child: h500("See all", 11, color: appColor),
+                    onTap: () => push(context, const StorageFacilities()),
                   )
                 ],
               ),
@@ -227,11 +234,13 @@ class _HomePageState extends State<HomePage> {
 // float action buttom
       floatingActionButton: FloatingActionButton(
         backgroundColor: appColor,
+        onPressed: user.category == "farmer"
+            ? () => push(context, const FarmerUpload())
+            : () => push(context, const FacilityUpload()),
         child: Icon(
           IconlyLight.upload,
           color: light,
         ),
-        onPressed: () {},
       ),
 
 // bottom nav section

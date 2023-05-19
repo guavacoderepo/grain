@@ -8,6 +8,6 @@ void main() => runApp(MultiProvider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: "poppins"),
-        home: Splash(),
+        home: const Splash(),
       ),
     ));
