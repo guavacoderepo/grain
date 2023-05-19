@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/spacer.dart';
+import 'package:intl/intl.dart';
 import '../../datamodels/farmersModel.dart';
 import '../../models/farmers.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/font.dart';
 
 class ViewFarm extends StatefulWidget {
-  ViewFarm({super.key});
+  Datum data;
+  ViewFarm(this.data, {super.key});
 
   @override
   State<ViewFarm> createState() => _ViewFarmState();
@@ -19,7 +21,7 @@ class _ViewFarmState extends State<ViewFarm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar(context, "Olams farms Limited"),
+      appBar: customeAppBar(context, widget.data.name),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -31,7 +33,7 @@ class _ViewFarmState extends State<ViewFarm> {
               child: Hero(
                 tag: 2.toString(),
                 child: Image.network(
-                  "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
+                  widget.data.imgUrl!,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -40,42 +42,48 @@ class _ViewFarmState extends State<ViewFarm> {
             vertical(10),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: h500("Cassava seed", 15, color: appColor),
+              child: h500(widget.data.name, 15, color: appColor),
             ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: h400("Location: Takum ibi ladi", 13, color: lightGrey),
+              child: h400("Location: ${widget.data.location}", 13,
+                  color: lightGrey),
             ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: h400("Contact number: 0908973826", 13, color: lightGrey),
+              child: h400("Contact number: ${widget.data.tel}", 13,
+                  color: lightGrey),
             ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: h400("Farm Size: 34589sqkm", 13, color: lightGrey),
-            ),
-
-            // font3("${data[len - i - 1].location.s}"),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: h400("Planted on: 23/4/2022", 13, color: lightGrey),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: h400left(
-                  "Description:\nOur silos, either flat or hopper bottom, are used for extended storage of large quantities of grain, seeds and granulate products. Our range of concrete base silos cover capacities ranging from 83 m3 to 45,055 m3 and with diameters from 4.58 m to 41.25 m.",
-                  13,
+              child: h400("Farm Size: ${widget.data.farmSize}sqkm", 13,
                   color: lightGrey),
             ),
 
             // font3("${data[len - i - 1].location.s}"),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: h400("Posted on: 23/4/2030", 13, color: lightGrey),
+              child: h400(
+                  "Planted on: ${DateFormat('dd/MM/yyyy').format(widget.data.plantDate!)}",
+                  13,
+                  color: lightGrey),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: h400left(widget.data.description, 13, color: lightGrey),
+            ),
+
+            // font3("${data[len - i - 1].location.s}"),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: h400(
+                  "Posted on: ${DateFormat('dd/MM/yyyy').format(widget.data.createdAt!)}",
+                  13,
+                  color: lightGrey),
             ),
 
             Padding(
@@ -102,7 +110,8 @@ class _ViewFarmState extends State<ViewFarm> {
                         data[index].name,
                         data[index].farmSize,
                         data[index].location,
-                        data[index].createdAt),
+                        DateFormat('dd/MM/yyyy')
+                            .format(data[index].createdAt!)),
                   );
                 },
               ),

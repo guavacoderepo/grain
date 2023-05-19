@@ -11,7 +11,6 @@ class StorageFacilities extends StatefulWidget {
 }
 
 class _StorageFacilitiessCornertate extends State<StorageFacilities> {
-
   @override
   void initState() {
     super.initState();
@@ -28,7 +27,8 @@ class _StorageFacilitiessCornertate extends State<StorageFacilities> {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(color: appColor),
-            child: AppBarContent("Storage Facilities", "facilities around you....."),
+            child: AppBarContent(
+                "Storage Facilities", "facilities around you....."),
           ),
         ),
 
@@ -37,7 +37,8 @@ class _StorageFacilitiessCornertate extends State<StorageFacilities> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
           child: ListView.separated(
             itemCount: 10,
-            itemBuilder: (context, index) => buildlistCard(context),
+            itemBuilder: (context, index) =>
+                buildlistCard(context, "", "", "", "", ""),
             separatorBuilder: (context, index) => const Divider(),
           ),
         ),
@@ -45,4 +46,3 @@ class _StorageFacilitiessCornertate extends State<StorageFacilities> {
     );
   }
 }
-

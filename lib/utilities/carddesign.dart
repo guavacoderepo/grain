@@ -45,7 +45,7 @@ buildCard(img, name, price, loc, date) => Container(
       ),
     );
 
-buildlistCard(context) => SizedBox(
+buildlistCard(context, name, location, size, tell, img) => SizedBox(
       height: 100,
       width: double.infinity,
       child: Row(
@@ -57,7 +57,7 @@ buildlistCard(context) => SizedBox(
             width: 120,
             height: 100,
             child: Image.network(
-              "https://blog.agribazaar.com/wp-content/uploads/2021/04/Farmer_harvesting_wheat_PTI_1200.jpg",
+              img,
               fit: BoxFit.cover,
             ),
           ),
@@ -71,14 +71,14 @@ buildlistCard(context) => SizedBox(
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.6,
-                    child: h500('White beans seeds White beans seeds', 12),
+                    child: h500(name, 12),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.6,
                     child: Row(
                       children: [
                         const Icon(IconlyLight.location),
-                        h500('Abuja', 10, color: lightGrey),
+                        h500(location, 10, color: lightGrey),
                       ],
                     ),
                   )
@@ -90,12 +90,13 @@ buildlistCard(context) => SizedBox(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    h500('#2400/T', 12, color: lightDark),
+                    h500('Size: $size', 12, color: lightDark),
                     ElevatedButton(
                       onPressed: () {},
                       style:
                           ElevatedButton.styleFrom(backgroundColor: appColor),
-                      child: h500("Contact seller", 8, color: light),
+                      // child: h500("Contact seller", 8, color: light),
+                      child: h500(tell, 8, color: light),
                     )
                   ],
                 ),

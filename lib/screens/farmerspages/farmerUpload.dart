@@ -10,6 +10,7 @@ import 'package:grain/utilities/input.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:cloudinary/cloudinary.dart';
 
 class FarmerUpload extends StatefulWidget {
   const FarmerUpload({super.key});
@@ -24,7 +25,14 @@ class _FarmerUploadState extends State<FarmerUpload> {
   DateTime? hdate;
   PlatformFile? file;
   String? filePath = "";
-  String? fileName = "";
+  bool isloading = false;
+
+  String preset = "el4dcj9v";
+  String cloudName = "dbzmy3wow";
+
+  final cloudinary = Cloudinary.unsignedConfig(
+    cloudName: "dbzmy3wow",
+  );
 
   final TextEditingController _crop = TextEditingController();
   final TextEditingController _number = TextEditingController();
@@ -33,6 +41,18 @@ class _FarmerUploadState extends State<FarmerUpload> {
   final TextEditingController _date = TextEditingController();
   final TextEditingController _hdate = TextEditingController();
   final TextEditingController _des = TextEditingController();
+
+  Future uploadimg() async {
+    final response = await cloudinary.unsignedUpload(
+      file: filePath,
+      uploadPreset: preset,
+      resourceType: CloudinaryResourceType.image,
+    );
+
+    if (response.isSuccessful) {
+      setState(() => uploadImgPath = response.secureUrl!);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,34 +166,44 @@ class _FarmerUploadState extends State<FarmerUpload> {
                       height: 50,
                       width: double.infinity,
                       child: TextButton(
-                        onPressed: () async {
-                          if (_crop.text.isEmpty ||
-                              _des.text.isEmpty ||
-                              _date.text.isEmpty ||
-                              _hdate.text.isEmpty ||
-                              _location.text.isEmpty ||
-                              _number.text.isEmpty ||
-                              _size.text.isEmpty) {
-                            print("empty field");
-                            return;
-                          }
-                          print(_crop.text);
-                          uploadFarm(
-                                  user.fullName,
-                                  _crop.text,
-                                  pdate!,
-                                  _location.text,
-                                  _size.text,
-                                  _des.text,
-                                  user.id,
-                                  _number.text,
-                                  hdate!,
-                                  fileName)
-                              .then((value) {
-                            print(value.toString());
-                          });
+                        onPressed: !isloading
+                            ? () async {
+                                if (_crop.text.isEmpty ||
+                                    _des.text.isEmpty ||
+                                    _date.text.isEmpty ||
+                                    _hdate.text.isEmpty ||
+                                    _location.text.isEmpty ||
+                                    _number.text.isEmpty ||
+                                    _size.text.isEmpty) {
+                                  print("empty field");
+                                  return;
+                                }
+
+                                setState(() => isloading = true);
+                                // upload image
+                                await uploadimg();
+                                // upload data
+
+                                uploadFarm(
+                                        user.fullName,
+                                        _crop.text,
+                                        pdate!,
+                                        _location.text,
+                                        _size.text,
+                                        _des.text,
+                                        user.id,
+                                        _number.text,
+                                        hdate!,
+                                        uploadImgPath)
+                                    .then((value) {
+                                  print("done ");
+                                  setState(() => isloading = false);
+                                  Navigator.pop(context);
+                                });
 // end of function
-                        },
+                                setState(() => isloading = false);
+                              }
+                            : null,
                         child: font1("Post", color: Colors.white),
                         style: TextButton.styleFrom(backgroundColor: appColor),
                       ),
@@ -199,8 +229,6 @@ class _FarmerUploadState extends State<FarmerUpload> {
         file = result.files.first;
         setState(() {
           filePath = file!.path;
-
-          fileName = file!.name;
           // print(fileName);
         });
         // print(filePath);
