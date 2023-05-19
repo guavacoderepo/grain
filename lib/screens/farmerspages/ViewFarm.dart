@@ -98,21 +98,27 @@ class _ViewFarmState extends State<ViewFarm> {
                 future: famersClass(),
                 builder: (context, s) {
                   var data = s.data!.data!;
-                  return DynamicHeightGridView(
-                    itemCount: 4,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    builder: (ctx, index) => buildCard(
+                  if (s.hasData) {
+                    return DynamicHeightGridView(
+                      itemCount: 4,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      builder: (ctx, index) => buildCard(
                         data[index].imgUrl,
                         data[index].name,
                         data[index].farmSize,
                         data[index].location,
-                        DateFormat('dd/MM/yyyy')
-                            .format(data[index].createdAt!)),
-                  );
+                        DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
+                      ),
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(color: appColor),
+                    );
+                  }
                 },
               ),
             ),

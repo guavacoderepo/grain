@@ -43,10 +43,10 @@ class _FarmersCornersCornertate extends State<FarmersCorner> {
           child: FutureBuilder<FarmersModel>(
             future: famersClass(),
             builder: (context, s) {
-              var data = s.data!.data;
+              var data = s.data!.data!;
               if (s.hasData) {
                 return ListView.separated(
-                  itemCount: data!.length,
+                  itemCount: data.length,
                   itemBuilder: (context, index) => InkWell(
                     child: buildlistCard(
                         context,
