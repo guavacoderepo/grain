@@ -3,6 +3,7 @@ import 'package:grain/screens/navbar/home.dart';
 import 'package:grain/screens/navbar/services.dart';
 import 'package:iconly/iconly.dart';
 import '../utilities/colors.dart';
+import 'navbar/profile.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -28,7 +29,7 @@ class _LandingPageState extends State<LandingPage> {
           HomePage(),
           Services(),
           Services(),
-          Services(),
+          Profile(),
         ],
       ),
 
