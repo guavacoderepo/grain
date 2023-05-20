@@ -1,22 +1,22 @@
 import 'dart:convert';
 
-class FarmersModel {
+class FacilitiesModel {
   bool? status;
   int? count;
   List<Datum>? data;
 
-  FarmersModel({
+  FacilitiesModel({
     this.status,
     this.count,
     this.data,
   });
 
-  factory FarmersModel.fromJson(String str) =>
-      FarmersModel.fromMap(json.decode(str));
+  factory FacilitiesModel.fromJson(String str) =>
+      FacilitiesModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory FarmersModel.fromMap(Map<String, dynamic> json) => FarmersModel(
+  factory FacilitiesModel.fromMap(Map<String, dynamic> json) => FacilitiesModel(
         status: json["status"],
         count: json["count"],
         data: List<Datum>.from(json["data"].map((x) => Datum.fromMap(x))),
@@ -31,15 +31,12 @@ class FarmersModel {
 
 class Datum {
   String? id;
+  String? size;
   String? name;
-  String? specie;
-  DateTime? plantDate;
   String? location;
-  String? farmSize;
   String? description;
-  String? owner;
   String? tel;
-  DateTime? cropDuration;
+  String? owner;
   String? imgUrl;
   DateTime? createdAt;
   DateTime? updatedAt;
@@ -47,15 +44,12 @@ class Datum {
 
   Datum({
     this.id,
+    this.size,
     this.name,
-    this.specie,
-    this.plantDate,
     this.location,
-    this.farmSize,
     this.description,
-    this.owner,
     this.tel,
-    this.cropDuration,
+    this.owner,
     this.imgUrl,
     this.createdAt,
     this.updatedAt,
@@ -68,15 +62,12 @@ class Datum {
 
   factory Datum.fromMap(Map<String, dynamic> json) => Datum(
         id: json["_id"],
+        size: json["size"],
         name: json["name"],
-        specie: json["specie"],
-        plantDate: DateTime.parse(json["plantDate"]),
         location: json["location"],
-        farmSize: json["farmSize"],
         description: json["description"],
-        owner: json["owner"],
         tel: json["tel"],
-        cropDuration: DateTime.parse(json["cropDuration"]),
+        owner: json["owner"],
         imgUrl: json["imgUrl"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
@@ -85,15 +76,12 @@ class Datum {
 
   Map<String, dynamic> toMap() => {
         "_id": id,
+        "size": size,
         "name": name,
-        "specie": specie,
-        "plantDate": plantDate!.toIso8601String(),
         "location": location,
-        "farmSize": farmSize,
         "description": description,
-        "owner": owner,
         "tel": tel,
-        "cropDuration": cropDuration!.toIso8601String(),
+        "owner": owner,
         "imgUrl": imgUrl,
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),

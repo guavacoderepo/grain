@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grain/constants/url.dart';
+import 'package:grain/screens/facilitypages/Viewfacility.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/carddesign.dart';
 import 'package:grain/utilities/colors.dart';
+import 'package:grain/utilities/routers.dart';
+
+import '../../datamodels/facilitieModel.dart';
+import '../../models/facilities.dart';
 
 class StorageFacilities extends StatefulWidget {
   const StorageFacilities({super.key});
@@ -34,14 +40,34 @@ class _StorageFacilitiessCornertate extends State<StorageFacilities> {
 
         // body section
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-          child: ListView.separated(
-            itemCount: 10,
-            itemBuilder: (context, index) =>
-                buildlistCard(context, "", "", "", "", ""),
-            separatorBuilder: (context, index) => const Divider(),
-          ),
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+            child: FutureBuilder<FacilitiesModel>(
+                future: getFacilities(),
+                builder: (context, s) {
+                  if (s.hasData) {
+                    var data = s.data!.data!;
+                    return ListView.separated(
+                      itemCount: data.length,
+                      itemBuilder: (context, i) => InkWell(
+                        child: buildlistCard(
+                          context,
+                          data[i].name,
+                          data[i].location,
+                          data[i].size,
+                          data[i].tel,
+                          data[i].imgUrl,
+                        ),
+                        onTap: () => push(context, ViewFacilities(data[i])),
+                      ),
+                      separatorBuilder: (context, index) => const Divider(),
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(
+                          color: appColor, strokeWidth: 1),
+                    );
+                  }
+                })),
       ),
     );
   }

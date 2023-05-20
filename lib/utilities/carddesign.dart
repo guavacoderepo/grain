@@ -4,7 +4,7 @@ import 'package:grain/utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
 import 'colors.dart';
 
-buildCard(img, name, price, loc, date) => Container(
+buildCard(img, name, size, loc, date) => Container(
       decoration: BoxDecoration(
           border: Border.all(color: bgGrey),
           borderRadius: BorderRadius.circular(5)),
@@ -14,9 +14,10 @@ buildCard(img, name, price, loc, date) => Container(
         children: [
           SizedBox(
             width: double.infinity,
-            height: 100,
-            child: Image.network(
-              img,
+            height: 110,
+            child: FadeInImage.assetNetwork(
+              placeholder: "assets/images/placeholder.jpeg",
+              image: img,
               fit: BoxFit.cover,
             ),
           ),
@@ -29,7 +30,7 @@ buildCard(img, name, price, loc, date) => Container(
               children: [
                 h500(name, 10),
                 vertical(5),
-                h600(price, 8),
+                h600(size, 8, color: appColor),
                 vertical(5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,8 +57,9 @@ buildlistCard(context, name, location, size, tell, img) => SizedBox(
           SizedBox(
             width: 120,
             height: 100,
-            child: Image.network(
-              img,
+            child: FadeInImage.assetNetwork(
+              placeholder: "assets/images/placeholder.jpeg",
+              image: img,
               fit: BoxFit.cover,
             ),
           ),

@@ -44,15 +44,14 @@ Future uploadFarm(name, specie, DateTime pdate, location, size, desc, owner,
   }
 }
 
-Future uploadFacility(name, specie, pdate, location, size, desc, owner, tel,
-    duration, img) async {
+Future uploadFacility(name, location, size, desc, owner, tel, img) async {
   var client = http.Client();
 
   try {
     String token = await retriveToken();
-    var uri = Uri.parse("$baseurl$updateuser");
+    var uri = Uri.parse("$baseurl$facilities");
 
-    var res = await client.put(
+    var res = await client.post(
       uri,
       headers: {
         'Content-Type': 'application/json',
@@ -60,18 +59,13 @@ Future uploadFacility(name, specie, pdate, location, size, desc, owner, tel,
         'Authorization': 'Bearer $token',
       },
       body: json.encode({
-        "body": {
-          "name": name,
-          "specie": specie,
-          "plantDate": pdate,
-          "location": location,
-          "farmSize": size,
-          "description": desc,
-          "owner": owner,
-          "tel": tel,
-          "cropDuration": duration,
-          "imgUrl": img
-        },
+        "name": name,
+        "size": size,
+        "location": location,
+        "description": desc,
+        "imgUrl": img,
+        "owner": owner,
+        "tel": tel
       }),
     );
 

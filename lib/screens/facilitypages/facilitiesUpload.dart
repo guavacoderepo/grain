@@ -1,11 +1,16 @@
 import 'dart:io';
+import 'package:cloudinary/cloudinary.dart';
 import 'package:flutter/material.dart';
+import 'package:grain/datamodels/userModel.dart';
+import 'package:grain/models/uploads.dart';
+import 'package:grain/models/user.dart';
 import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:grain/utilities/input.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:grain/utilities/spacer.dart';
+import 'package:provider/provider.dart';
 
 class FacilityUpload extends StatefulWidget {
   const FacilityUpload({super.key});
@@ -18,15 +23,35 @@ class _FacilityUploadState extends State<FacilityUpload> {
   String? uploadImgPath = "";
   PlatformFile? file;
   String? filePath = "";
-  String? fileName = "";
+  bool isloading = false;
+
+  String preset = "el4dcj9v";
+  String cloudName = "dbzmy3wow";
+
+  final cloudinary = Cloudinary.unsignedConfig(
+    cloudName: "dbzmy3wow",
+  );
 
   final TextEditingController _number = TextEditingController();
   final TextEditingController _location = TextEditingController();
   final TextEditingController _size = TextEditingController();
   final TextEditingController _des = TextEditingController();
 
+  Future uploadimg() async {
+    final response = await cloudinary.unsignedUpload(
+      file: filePath,
+      uploadPreset: preset,
+      resourceType: CloudinaryResourceType.image,
+    );
+
+    if (response.isSuccessful) {
+      setState(() => uploadImgPath = response.secureUrl!);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    UserModel user = Provider.of<User>(context).user;
     return Scaffold(
       appBar: customeAppBar(context, "Upload Facility Details"),
       body: GestureDetector(
@@ -41,7 +66,6 @@ class _FacilityUploadState extends State<FacilityUpload> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     const SizedBox(height: 10),
                     h300("Phone Number", 12),
                     input(_number, hint: "Hint: 09087569809"),
@@ -86,7 +110,31 @@ class _FacilityUploadState extends State<FacilityUpload> {
                       child: TextButton(
                         onPressed: () async {
 // add to farms
+                          if (_number.text.isEmpty ||
+                              _des.text.isEmpty ||
+                              _location.text.isEmpty ||
+                              _size.text.isEmpty) {
+                            print("empty field");
+                            return;
+                          }
+                          setState(() => isloading = true);
+                          // upload image
+                          await uploadimg();
+                          // upload data
 
+                          uploadFacility(
+                                  user.fullName,
+                                  _location.text,
+                                  _size.text,
+                                  _des.text,
+                                  user.id,
+                                  _number.text,
+                                  uploadImgPath)
+                              .then((value) {
+                            print("done ");
+                            setState(() => isloading = false);
+                            Navigator.pop(context);
+                          });
 // end of function
                         },
                         child: font1("Post", color: Colors.white),
@@ -114,8 +162,6 @@ class _FacilityUploadState extends State<FacilityUpload> {
         file = result.files.first;
         setState(() {
           filePath = file!.path;
-
-          fileName = file!.name;
           // print(fileName);
         });
         // print(filePath);

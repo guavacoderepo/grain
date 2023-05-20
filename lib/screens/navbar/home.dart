@@ -11,6 +11,8 @@ import 'package:intl/intl.dart';
 import 'package:marquee/marquee.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:provider/provider.dart';
+import '../../datamodels/facilitieModel.dart';
+import '../../models/facilities.dart';
 import '../../models/farmers.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/spacer.dart';
@@ -213,8 +215,8 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              child: FutureBuilder<FarmersModel>(
-                future: famersClass(),
+              child: FutureBuilder<FacilitiesModel>(
+                future: getFacilities(),
                 builder: (context, s) {
                   var data = s.data!.data!;
                   return DynamicHeightGridView(
@@ -227,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                     builder: (ctx, index) => buildCard(
                       data[index].imgUrl,
                       data[index].name,
-                      "Size: ${data[index].farmSize}",
+                      "Size: ${data[index].size ?? ""}",
                       data[index].location,
                       DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
                     ),
