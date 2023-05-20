@@ -62,8 +62,9 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10, top: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Badge(
+              isLabelVisible: user.isNotification!,
               child: Icon(
                 IconlyLight.notification,
                 color: dark,
@@ -161,25 +162,33 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              child: FutureBuilder<FarmersModel>(
+              child: FutureBuilder(
                 future: famersClass(),
-                builder: (context, s) {
-                  var data = s.data!.data!;
-                  return DynamicHeightGridView(
-                    itemCount: 4,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    builder: (ctx, index) => buildCard(
-                      data[index].imgUrl,
-                      data[index].name,
-                      "Size: ${data[index].farmSize}",
-                      data[index].location,
-                      DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
-                    ),
-                  );
+                builder: (context, AsyncSnapshot<FarmersModel> s) {
+                  var data = s.data!.data;
+                  if (s.hasData && s.data!.data != null) {
+                    return DynamicHeightGridView(
+                      itemCount: 4,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      builder: (ctx, index) => buildCard(
+                        data![index].imgUrl,
+                        data[index].name,
+                        "Size: ${data[index].farmSize}",
+                        data[index].location,
+                        DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
+                      ),
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: appColor,
+                      ),
+                    );
+                  }
                 },
               ),
             ),

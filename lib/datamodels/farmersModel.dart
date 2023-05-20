@@ -1,17 +1,18 @@
 import 'dart:convert';
 
 class FarmersModel {
-  bool? status;
-  int? count;
+  bool? status = false;
+  int? count = 0;
   List<Datum>? data;
 
   FarmersModel({
-     this.status,
-     this.count,
-     this.data,
+    this.status,
+    this.count,
+    this.data,
   });
 
-  factory FarmersModel.fromJson(String str) => FarmersModel.fromMap(json.decode(str));
+  factory FarmersModel.fromJson(String str) =>
+      FarmersModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
@@ -29,36 +30,36 @@ class FarmersModel {
 }
 
 class Datum {
-  String? id;
-  String? name;
-  String? specie;
-  DateTime? plantDate;
-  String? location;
-  String? farmSize;
-  String? description;
-  String? owner;
-  String? tel;
-  DateTime? cropDuration;
-  String? imgUrl;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  int? v;
+  String? id = "";
+  String? name = "";
+  String? specie = "";
+  DateTime? plantDate = DateTime.now();
+  String? location = "";
+  String? farmSize = "";
+  String? description = "";
+  String? owner = "";
+  String? tel = "";
+  DateTime? cropDuration = DateTime.now();
+  String? imgUrl = "";
+  DateTime? createdAt = DateTime.now();
+  DateTime? updatedAt = DateTime.now();
+  int? v = 0;
 
   Datum({
-     this.id,
-     this.name,
-     this.specie,
-     this.plantDate,
-     this.location,
-     this.farmSize,
-     this.description,
-     this.owner,
-     this.tel,
-     this.cropDuration,
-     this.imgUrl,
-     this.createdAt,
-     this.updatedAt,
-     this.v,
+    this.id,
+    this.name,
+    this.specie,
+    this.plantDate,
+    this.location,
+    this.farmSize,
+    this.description,
+    this.owner,
+    this.tel,
+    this.cropDuration,
+    this.imgUrl,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
   });
 
   factory Datum.fromJson(String str) => Datum.fromMap(json.decode(str));

@@ -15,8 +15,7 @@ Future<FarmersModel> famersClass() async {
       FarmersModel data = FarmersModel.fromMap(json.decode(response.body));
       return data;
     } else {
-      FarmersModel data = FarmersModel.fromMap(json.decode(response.body));
-      return data;
+      return FarmersModel(status: false);
     }
   } catch (e) {
     throw Exception(e);

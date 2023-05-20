@@ -40,7 +40,7 @@ class _FarmersCornersCornertate extends State<FarmersCorner> {
         // body section
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
-          child: FutureBuilder<FarmersModel>(
+          child: FutureBuilder<FarmersModel?>(
             future: famersClass(),
             builder: (context, s) {
               var data = s.data!.data!;

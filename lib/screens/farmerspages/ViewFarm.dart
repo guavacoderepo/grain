@@ -21,7 +21,7 @@ class _ViewFarmState extends State<ViewFarm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar(context, widget.data.name),
+      appBar: customeAppBar(context, widget.data.specie),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -42,7 +42,7 @@ class _ViewFarmState extends State<ViewFarm> {
             vertical(10),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: h500(widget.data.name, 15, color: appColor),
+              child: h500(widget.data.specie, 15, color: appColor),
             ),
 
             Padding(
@@ -94,7 +94,7 @@ class _ViewFarmState extends State<ViewFarm> {
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              child: FutureBuilder<FarmersModel>(
+              child: FutureBuilder<FarmersModel?>(
                 future: famersClass(),
                 builder: (context, s) {
                   var data = s.data!.data!;
