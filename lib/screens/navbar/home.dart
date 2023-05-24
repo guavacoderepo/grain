@@ -4,6 +4,7 @@ import 'package:grain/datamodels/farmersModel.dart';
 import 'package:grain/datamodels/userModel.dart';
 import 'package:grain/models/user.dart';
 import 'package:grain/screens/facilitypages/facilities.dart';
+import 'package:grain/screens/notifications.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 import 'package:grain/utilities/routers.dart';
@@ -68,9 +69,12 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Badge(
               isLabelVisible: user.isNotification!,
-              child: Icon(
-                IconlyLight.notification,
-                color: dark,
+              child: IconButton(
+                onPressed: () => push(context, const Notifications()),
+                icon: Icon(
+                  IconlyLight.notification,
+                  color: dark,
+                ),
               ),
             ),
           )
