@@ -11,9 +11,9 @@ customeAppBar(context, title) => AppBar(
           fontSize: 18,
         ),
       ),
-      leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_rounded)),
+      // leading: IconButton(
+      //     onPressed: () => Navigator.pop(context),
+      //     icon: const Icon(Icons.arrow_back_rounded)),
     );
 
 class AppBarContent extends StatelessWidget {

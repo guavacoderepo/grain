@@ -26,7 +26,16 @@ class _SigninState extends State<Signin> {
 // scafold bg color
         backgroundColor: light,
 // appbar section
-        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: h400("EN", 14, color: dark),
+            )
+          ],
+        ),
 // body section
         body: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
