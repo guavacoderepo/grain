@@ -17,8 +17,9 @@ import '../../models/farmers.dart';
 import '../../utilities/carddesign.dart';
 import '../../utilities/spacer.dart';
 import 'package:iconly/iconly.dart';
-
+import '../facilitypages/Viewfacility.dart';
 import '../facilitypages/facilitiesUpload.dart';
+import '../farmerspages/ViewFarm.dart';
 import '../farmerspages/farmerUpload.dart';
 import '../farmerspages/farmersCorner.dart';
 
@@ -176,13 +177,16 @@ class _HomePageState extends State<HomePage> {
                       crossAxisCount: 2,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      builder: (ctx, index) => buildCard(
-                        data![index].imgUrl,
-                        data[index].name,
-                        "Size: ${data[index].farmSize}",
-                        data[index].location,
-                        DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
-                      ),
+                      builder: (ctx, index) => InkWell(
+                          child: buildCard(
+                            data![index].imgUrl,
+                            data[index].name,
+                            "Size: ${data[index].farmSize}",
+                            data[index].location,
+                            DateFormat('dd/MM/yyyy')
+                                .format(data[index].createdAt!),
+                          ),
+                          onTap: () => push(context, ViewFarm(data[index]))),
                     );
                   } else {
                     return Center(
@@ -226,12 +230,15 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 2,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    builder: (ctx, index) => buildCard(
-                      data[index].imgUrl,
-                      data[index].name,
-                      "Size: ${data[index].size ?? ""}",
-                      data[index].location,
-                      DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
+                    builder: (ctx, index) => InkWell(
+                      child: buildCard(
+                        data[index].imgUrl,
+                        data[index].name,
+                        "Size: ${data[index].size ?? ""}",
+                        data[index].location,
+                        DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
+                      ),
+                      onTap: () => push(context, ViewFacilities(data[index])),
                     ),
                   );
                 },
