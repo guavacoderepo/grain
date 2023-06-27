@@ -7,7 +7,7 @@ import 'dart:convert';
 class Authentication {
   var client = http.Client();
 
-  Future registerUser(name, email, tel, pwd, category) async {
+  Future<Map<String, dynamic>> registerUser(name, email, tel, pwd, category) async {
     // set uli string
     final Uri url = Uri.parse(baseurl + register);
 

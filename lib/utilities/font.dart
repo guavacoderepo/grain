@@ -17,7 +17,7 @@ font3(text, {Color color = const Color.fromARGB(255, 99, 100, 99)}) => Text(
 
 font4(text, {Color color = const Color(0xff223D0D)}) => Text(
       text,
-      style: TextStyle(fontSize: 20, color: color, fontWeight: FontWeight.w600),
+      style: TextStyle(fontSize: 17, color: color, fontWeight: FontWeight.w400),
       textAlign: TextAlign.left,
     );
 

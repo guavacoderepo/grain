@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:grain/datamodels/userModel.dart';
+import 'package:grain/models/auth.dart';
+import 'package:grain/models/user.dart';
+import 'package:grain/screens/landing.dart';
 import 'package:grain/screens/onboarding/createAccount.dart';
 import 'package:grain/utilities/routers.dart';
+import 'package:grain/utilities/sharepref.dart';
+import 'package:provider/provider.dart';
 import '../../utilities/colors.dart';
 import '../../utilities/font.dart';
 import '../../utilities/input.dart';
@@ -73,7 +79,12 @@ class _SigninState extends State<Signin> {
                     ),
                     vertical(48),
 // submittion button
-                    submitbtn(context, "Sign In", () {}),
+                    submitbtn(context, "Sign In", () async {
+                      print("submitting");
+                      Authentication()
+                          .loginUser(_email.text, _pwd.text)
+                          .then((auth) => onLogin(auth));
+                    }),
                     vertical(24),
 // already have an account
                     InkWell(
@@ -98,5 +109,30 @@ class _SigninState extends State<Signin> {
         ),
       ),
     );
+  }
+
+  // onregister handler function
+  onLogin(auth) {
+    print("submitting...........");
+    if (auth["status"] == false) {
+      print(auth["data"].toString());
+      print(false);
+      return;
+    }
+
+    // flashBar(context, "success", "User login successful",
+    //     Icons.check_circle_outlined);
+
+    // setting user data
+    UserModel user = auth["data"];
+
+    // set user
+    Provider.of<User>(context, listen: false).setUser(user);
+    // save user token in sharepreff
+    saveToken(auth["token"]);
+
+    // regiatration successful snackbar
+    print("successful...");
+    pushandreplace(context, const LandingPage());
   }
 }

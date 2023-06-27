@@ -24,6 +24,7 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _phone = TextEditingController();
   final TextEditingController _pwd = TextEditingController();
+  final TextEditingController _dob = TextEditingController();
 
   // final bool _farmer = true;
   // final bool _facilties = false;
@@ -86,7 +87,7 @@ class _CreateAccountState extends State<CreateAccount> {
 // dob section
                     h300("Date of Birth", 14, color: lightGrey),
                     vertical(4),
-                    textField("Enter date of birth", _email),
+                    textField("Enter date of birth", _dob),
                     vertical(15),
 
 // phone number section
