@@ -8,14 +8,14 @@ import 'package:grain/utilities/routers.dart';
 
 import '../../models/farmers.dart';
 
-class FarmersCorner extends StatefulWidget {
-  const FarmersCorner({super.key});
+class Bookmarks extends StatefulWidget {
+  const Bookmarks({super.key});
 
   @override
-  State<FarmersCorner> createState() => _FarmersCornersCornertate();
+  State<Bookmarks> createState() => _BookmarkssCornertate();
 }
 
-class _FarmersCornersCornertate extends State<FarmersCorner> {
+class _BookmarkssCornertate extends State<Bookmarks> {
   @override
   void initState() {
     super.initState();
@@ -33,7 +33,7 @@ class _FarmersCornersCornertate extends State<FarmersCorner> {
             padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(color: appColor),
             child: const AppBarContent(
-                "Famer's Corner", "Corn, maize, beans , rice seeds etc"),
+                "Bookmarks", "Corn, maize, beans , rice seeds etc"),
           ),
         ),
 

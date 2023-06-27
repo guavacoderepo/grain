@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grain/screens/navbar/bookmark.dart';
 import 'package:grain/screens/navbar/home.dart';
 import 'package:grain/screens/navbar/services.dart';
 import 'package:iconly/iconly.dart';
@@ -28,7 +29,7 @@ class _LandingPageState extends State<LandingPage> {
         children: const [
           HomePage(),
           Services(),
-          Services(),
+          Bookmarks(),
           Profile(),
         ],
       ),
