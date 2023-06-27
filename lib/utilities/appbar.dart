@@ -17,9 +17,9 @@ customeAppBar(context, title) => AppBar(
     );
 
 class AppBarContent extends StatelessWidget {
-  dynamic title, search;
+  final dynamic title, search;
 
-  AppBarContent(this.title, this.search, {super.key});
+  const AppBarContent(this.title, this.search, {super.key});
 
   @override
   Widget build(BuildContext context) {

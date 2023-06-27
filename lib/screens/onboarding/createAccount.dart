@@ -25,8 +25,8 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController _phone = TextEditingController();
   final TextEditingController _pwd = TextEditingController();
 
-  final bool _farmer = true;
-  final bool _facilties = false;
+  // final bool _farmer = true;
+  // final bool _facilties = false;
 
   String? _category = 'farmer';
 

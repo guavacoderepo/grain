@@ -10,8 +10,8 @@ import '../../utilities/carddesign.dart';
 import '../../utilities/font.dart';
 
 class ViewFacilities extends StatefulWidget {
-  Datum data;
-  ViewFacilities(this.data, {super.key});
+  final Datum data;
+   const ViewFacilities(this.data, {super.key});
 
   @override
   State<ViewFacilities> createState() => _ViewFacilitiesState();
