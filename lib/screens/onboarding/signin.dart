@@ -80,7 +80,6 @@ class _SigninState extends State<Signin> {
                     vertical(48),
 // submittion button
                     submitbtn(context, "Sign In", () async {
-                      print("submitting");
                       Authentication()
                           .loginUser(_email.text, _pwd.text)
                           .then((auth) => onLogin(auth));
@@ -113,10 +112,11 @@ class _SigninState extends State<Signin> {
 
   // onregister handler function
   onLogin(auth) {
-    print("submitting...........");
     if (auth["status"] == false) {
-      print(auth["data"].toString());
-      print(false);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(auth["data"].toString()),
+      ));
+
       return;
     }
 
@@ -132,7 +132,9 @@ class _SigninState extends State<Signin> {
     saveToken(auth["token"]);
 
     // regiatration successful snackbar
-    print("successful...");
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text("Successful.."),
+    ));
     pushandreplace(context, const LandingPage());
   }
 }

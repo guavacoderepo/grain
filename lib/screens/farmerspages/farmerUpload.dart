@@ -175,7 +175,10 @@ class _FarmerUploadState extends State<FarmerUpload> {
                                     _location.text.isEmpty ||
                                     _number.text.isEmpty ||
                                     _size.text.isEmpty) {
-                                  print("empty field");
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Empty fields"),
+                                  ));
                                   return;
                                 }
 
@@ -196,7 +199,10 @@ class _FarmerUploadState extends State<FarmerUpload> {
                                         hdate!,
                                         uploadImgPath)
                                     .then((value) {
-                                  print("done ");
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Done"),
+                                  ));
                                   setState(() => isloading = false);
                                   Navigator.pop(context);
                                 });

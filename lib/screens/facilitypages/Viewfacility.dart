@@ -11,7 +11,7 @@ import '../../utilities/font.dart';
 
 class ViewFacilities extends StatefulWidget {
   final Datum data;
-   const ViewFacilities(this.data, {super.key});
+  const ViewFacilities(this.data, {super.key});
 
   @override
   State<ViewFacilities> createState() => _ViewFacilitiesState();

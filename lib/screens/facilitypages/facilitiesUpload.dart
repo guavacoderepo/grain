@@ -114,7 +114,10 @@ class _FacilityUploadState extends State<FacilityUpload> {
                               _des.text.isEmpty ||
                               _location.text.isEmpty ||
                               _size.text.isEmpty) {
-                            print("empty field");
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text("Empty fields"),
+                            ));
                             return;
                           }
                           setState(() => isloading = true);
@@ -131,7 +134,10 @@ class _FacilityUploadState extends State<FacilityUpload> {
                                   _number.text,
                                   uploadImgPath)
                               .then((value) {
-                            print("done ");
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text("Done"),
+                            ));
                             setState(() => isloading = false);
                             Navigator.pop(context);
                           });

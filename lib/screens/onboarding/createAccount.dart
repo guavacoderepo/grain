@@ -127,7 +127,6 @@ class _CreateAccountState extends State<CreateAccount> {
                     vertical(80),
 // submittion button
                     submitbtn(context, "Create Account", () async {
-                      print("submitting");
                       Authentication()
                           .registerUser(_name.text, _email.text, _phone.text,
                               _pwd.text, _category)
@@ -155,10 +154,11 @@ class _CreateAccountState extends State<CreateAccount> {
 
   // onregister handler function
   onRegister(auth) {
-    print("submitting...........");
     if (auth["status"] == false) {
-      print(auth["data"].toString());
-      print(false);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(auth["data"].toString()),
+      ));
+
       return;
     }
 
@@ -174,7 +174,6 @@ class _CreateAccountState extends State<CreateAccount> {
     saveToken(auth["token"]);
 
     // regiatration successful snackbar
-    print("successful...");
     pushandreplace(context, const LandingPage());
   }
 }

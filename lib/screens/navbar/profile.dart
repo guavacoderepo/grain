@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grain/screens/onboarding/signin.dart';
+import 'package:grain/screens/profile/faq.dart';
+import 'package:grain/screens/profile/upolad.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/spacer.dart';
 import 'package:provider/provider.dart';
@@ -85,7 +87,7 @@ class _ProfileState extends State<Profile> {
                   leading: Icon(Icons.upload, color: appColor),
                   title: h400("Uploads", 15),
                   trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                  onTap: () {}),
+                  onTap: () => push(context, const Uploads())),
               ListTile(
                   contentPadding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -99,6 +101,7 @@ class _ProfileState extends State<Profile> {
                 leading: Icon(Icons.today_outlined, color: appColor),
                 title: h400("FAQ", 15),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                onTap: () => push(context, const FAQ()),
               ),
               ListTile(
                   contentPadding:

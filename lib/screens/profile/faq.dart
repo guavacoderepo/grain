@@ -3,7 +3,6 @@ import 'package:grain/utilities/appbar.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 
-
 class FAQ extends StatefulWidget {
   const FAQ({super.key});
 
@@ -18,7 +17,7 @@ class _FAQState extends State<FAQ> {
 // bg color
       backgroundColor: light,
 // appbar section
-      appBar: customeAppBar(context,"FAQ"),
+      appBar: customeAppBar(context, "FAQ"),
 // app body section
       body: Padding(
         padding: EdgeInsets.only(left: 20, right: 20, top: 0),
