@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grain/utilities/colors.dart';
 import '../utilities/font.dart';
 import 'onboarding/splash 2.dart';
 
@@ -15,6 +16,7 @@ class ErrorPage extends StatelessWidget {
         children: [
           h500(error, 16),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: appColor),
             onPressed: () {
               Navigator.pushReplacement(
                 context,
@@ -23,7 +25,7 @@ class ErrorPage extends StatelessWidget {
                 ),
               );
             },
-            child: h400("Reload", 14),
+            child: h400("Reload", 14, color: light),
           )
         ],
       )),
