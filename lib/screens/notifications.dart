@@ -14,7 +14,7 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customeAppBar(context,"Notifications"),
+      appBar: customeAppBar(context, "Notifications"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -68,11 +68,11 @@ class _NotificationsState extends State<Notifications> {
         contentPadding: const EdgeInsets.all(10),
         tileColor: bgGrey,
         leading: CircleAvatar(
-          backgroundColor: Colors.grey,
-          child: font4(s),
+          backgroundColor: Colors.grey.withOpacity(0.3),
+          child: h400(s, 15),
         ),
-        title: font1(n),
-        subtitle: font3(d),
+        title: h400(n, 14, color: appColor),
+        subtitle: h400(d, 12),
         // trailing: const Icon(Icons.arrow_forward_ios_rounded),
       );
 }

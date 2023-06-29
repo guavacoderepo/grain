@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  h500("Crop & Harvest", 14),
+                  h400("Crop & Harvest", 14),
                   InkWell(
                     child: h500("See all", 11, color: appColor),
                     onTap: () => push(context, const FarmersCorner()),
@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  h500("Storage facilities", 14),
+                  h400("Storage facilities", 14),
                   InkWell(
                     child: h500("See all", 11, color: appColor),
                     onTap: () => push(context, const StorageFacilities()),

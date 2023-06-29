@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 
-submitbtn(context, title, Function onClick) => SizedBox(
+submitbtn(context, String title, bool isloading, Function onClick) => SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 55,
       child: ElevatedButton(
-        onPressed: () => onClick(),
+        onPressed: isloading ? null : () => onClick(),
         style: ElevatedButton.styleFrom(
             backgroundColor: appColor, shape: const StadiumBorder()),
         child: h600(title, 12, color: light),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grain/screens/onboarding/signin.dart';
 import 'package:provider/provider.dart';
 import '../../datamodels/userModel.dart';
 import '../../models/auth.dart';
@@ -30,12 +31,13 @@ class _CreateAccountState extends State<CreateAccount> {
   // final bool _facilties = false;
 
   String? _category = 'farmer';
-
+  String? language = "English";
+  bool isLoading = false;
+  bool pwd = false;
   // List of items in our dropdown menu
-  var items = [
-    'farmer',
-    'facility owner',
-  ];
+  var items = ['farmer', 'facility owner'];
+
+  var lang = ["English", "Igbo", "Youroba", "Hausa"];
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +53,21 @@ class _CreateAccountState extends State<CreateAccount> {
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: h400("EN", 14, color: dark),
+              child: DropdownButton(
+                value: language,
+                items: lang
+                    .map((item) => DropdownMenuItem(
+                          value: item,
+                          child: h400(item, 14, color: dark),
+                        ))
+                    .toList(),
+                onChanged: (val) => setState(() => language = val),
+              ),
             )
           ],
         ),
+
+        // h400("EN", 14, color: dark),
 // body section
         body: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
@@ -98,7 +111,8 @@ class _CreateAccountState extends State<CreateAccount> {
 // password section
                     h300("Password", 14, color: lightGrey),
                     vertical(4),
-                    passwordField("Enter Password", true, _pwd, () {}),
+                    passwordField("Enter Password", pwd, _pwd,
+                        () => setState(() => pwd = !pwd)),
 
                     vertical(15),
 
@@ -107,26 +121,26 @@ class _CreateAccountState extends State<CreateAccount> {
                       value: _category,
 
                       // Down Arrow Icon
-                      icon: const Icon(Icons.keyboard_arrow_down),
 
                       // Array list of items
-                      items: items.map((String items) {
+                      items: items.map((String item) {
                         return DropdownMenuItem(
-                          value: items,
-                          child: Text(items),
+                          value: item,
+                          child: h400(item, 14, color: dark),
                         );
                       }).toList(),
-                      // After selecting the desired option,it will
-                      // change button value to selected value
+
                       onChanged: (String? newValue) {
                         setState(() {
                           _category = newValue!;
                         });
                       },
                     ),
-                    vertical(80),
+                    vertical(40),
+
 // submittion button
-                    submitbtn(context, "Create Account", () async {
+                    submitbtn(context, "Create Account", isLoading, () async {
+                      setState(() => isLoading = true);
                       Authentication()
                           .registerUser(_name.text, _email.text, _phone.text,
                               _pwd.text, _category)
@@ -134,13 +148,17 @@ class _CreateAccountState extends State<CreateAccount> {
                     }),
                     vertical(24),
 // already have an account
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        h500("Already have an account?", 12, color: lightGrey),
-                        h400(" Log In", 12, color: appColor)
-                      ],
+                    InkWell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          h500("Already have an account?", 12,
+                              color: lightGrey),
+                          h400(" Log In", 12, color: appColor)
+                        ],
+                      ),
+                      onTap: () => pushandreplace(context, const Signin()),
                     )
                   ],
                 ),
@@ -155,6 +173,7 @@ class _CreateAccountState extends State<CreateAccount> {
   // onregister handler function
   onRegister(auth) {
     if (auth["status"] == false) {
+      setState(() => isLoading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(auth["data"].toString()),
       ));
@@ -172,7 +191,11 @@ class _CreateAccountState extends State<CreateAccount> {
     Provider.of<User>(context, listen: false).setUser(user);
     // save user token in sharepreff
     saveToken(auth["token"]);
-
+    setState(() => isLoading = false);
+    // regiatration successful snackbar
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text("Registration successful"),
+    ));
     // regiatration successful snackbar
     pushandreplace(context, const LandingPage());
   }

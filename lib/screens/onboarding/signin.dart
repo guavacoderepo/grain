@@ -23,6 +23,11 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _pwd = TextEditingController();
+  String? language = "English";
+
+  var lang = ["English", "Igbo", "Youroba", "Hausa"];
+  bool pwd = false;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +43,16 @@ class _SigninState extends State<Signin> {
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: h400("EN", 14, color: dark),
+              child: DropdownButton(
+                value: language,
+                items: lang
+                    .map((item) => DropdownMenuItem(
+                          value: item,
+                          child: h400(item, 14, color: dark),
+                        ))
+                    .toList(),
+                onChanged: (val) => setState(() => language = val),
+              ),
             )
           ],
         ),
@@ -68,7 +82,8 @@ class _SigninState extends State<Signin> {
 // password section
                     h400("Password", 14, color: lightGrey),
                     vertical(4),
-                    passwordField("Enter Password", true, _pwd, () {}),
+                    passwordField("Enter Password", pwd, _pwd,
+                        () => setState(() => pwd = !pwd)),
                     vertical(16),
 // forgotten password section
                     Align(
@@ -79,7 +94,9 @@ class _SigninState extends State<Signin> {
                     ),
                     vertical(48),
 // submittion button
-                    submitbtn(context, "Sign In", () async {
+                    submitbtn(context, "Sign In", isLoading, () async {
+
+                      setState(() => isLoading = true);
                       Authentication()
                           .loginUser(_email.text, _pwd.text)
                           .then((auth) => onLogin(auth));
@@ -113,6 +130,7 @@ class _SigninState extends State<Signin> {
   // onregister handler function
   onLogin(auth) {
     if (auth["status"] == false) {
+      setState(() => isLoading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(auth["data"].toString()),
       ));
@@ -133,8 +151,10 @@ class _SigninState extends State<Signin> {
 
     // regiatration successful snackbar
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text("Successful.."),
+      content: Text("Login successful"),
     ));
+
+    setState(() => isLoading = false);
     pushandreplace(context, const LandingPage());
   }
 }

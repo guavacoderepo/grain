@@ -60,7 +60,9 @@ TextField passwordField(hint, bool obscure, ctl, Function onClick) => TextField(
           hintText: hint,
           suffixIcon: IconButton(
             onPressed: () => onClick(),
-            icon: const Icon(Icons.visibility),
+            icon: obscure
+                ? const Icon(Icons.visibility)
+                : const Icon(Icons.visibility_off),
           ),
           suffixIconColor: lightDark),
       obscureText: obscure,

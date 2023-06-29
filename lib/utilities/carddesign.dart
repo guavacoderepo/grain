@@ -28,15 +28,15 @@ buildCard(img, name, size, loc, date) => Container(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                h500(name, 10),
+                h400(name, 10),
                 vertical(5),
-                h600(size, 8, color: appColor),
+                h500(size, 8, color: appColor),
                 vertical(5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    h500("⟟ $loc", 10),
-                    h500(date, 8),
+                    h400("⟟ $loc", 10),
+                    h400(date, 8),
                   ],
                 )
               ],

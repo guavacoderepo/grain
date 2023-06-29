@@ -56,7 +56,7 @@ class _ResetPwdState extends State<ResetPwd> {
                     vertical(24),
 
 // submittion button
-                    submitbtn(context, "Reset Password", () {}),
+                    submitbtn(context, "Reset Password", false, () {}),
                     vertical(24),
                   ],
                 ),
