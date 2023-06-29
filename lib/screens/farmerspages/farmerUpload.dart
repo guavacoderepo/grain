@@ -168,6 +168,7 @@ class _FarmerUploadState extends State<FarmerUpload> {
                       child: TextButton(
                         onPressed: !isloading
                             ? () async {
+                                setState(() => isloading = true);
                                 if (_crop.text.isEmpty ||
                                     _des.text.isEmpty ||
                                     _date.text.isEmpty ||
@@ -182,7 +183,6 @@ class _FarmerUploadState extends State<FarmerUpload> {
                                   return;
                                 }
 
-                                setState(() => isloading = true);
                                 // upload image
                                 await uploadimg();
                                 // upload data

@@ -73,7 +73,7 @@ buildlistCard(context, name, location, size, tell, img) => SizedBox(
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.6,
-                    child: h500(name, 12),
+                    child: h400(name, 12),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.6,

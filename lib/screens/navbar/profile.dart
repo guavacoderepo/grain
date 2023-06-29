@@ -50,7 +50,9 @@ class _ProfileState extends State<Profile> {
                       ? CircleAvatar(
                           radius: 55,
                           backgroundColor: bgGrey,
-                          backgroundImage: AssetImage(imgurl))
+                          backgroundImage: const NetworkImage(
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlhlSFBo3giGgqD60F3ael2IG7WzGCVvRV5A&usqp=CAU"),
+                        )
                       : CircleAvatar(
                           radius: 55,
                           backgroundColor: bgGrey,

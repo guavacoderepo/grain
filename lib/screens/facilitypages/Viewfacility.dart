@@ -99,11 +99,12 @@ class _ViewFacilitiesState extends State<ViewFacilities> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     builder: (ctx, index) => buildCard(
-                      data[index].imgUrl,
-                      data[index].name,
-                      "Size: ${data[index].size}",
-                      data[index].location,
-                      DateFormat("dd/MM/yyy").format(data[index].createdAt!),
+                      data[data.length - index - 1].imgUrl,
+                      data[data.length - index - 1].name,
+                      "Size: ${data[data.length - index - 1].size}",
+                      data[data.length - index - 1].location,
+                      DateFormat("dd/MM/yyy")
+                          .format(data[data.length - index - 1].createdAt!),
                     ),
                   );
                 },

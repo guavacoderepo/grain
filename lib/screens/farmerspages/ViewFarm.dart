@@ -107,11 +107,12 @@ class _ViewFarmState extends State<ViewFarm> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       builder: (ctx, index) => buildCard(
-                        data[index].imgUrl,
-                        data[index].name,
-                        data[index].farmSize,
-                        data[index].location,
-                        DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
+                        data[data.length - index - 1].imgUrl,
+                        data[data.length - index - 1].name,
+                        data[data.length - index - 1].farmSize,
+                        data[data.length - index - 1].location,
+                        DateFormat('dd/MM/yyyy')
+                            .format(data[data.length - index - 1].createdAt!),
                       ),
                     );
                   } else {

@@ -32,13 +32,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
+  // int imgIndex = 0;
   int textIndex = 0;
   List headerText = [
     "Revolutionize Your Harvest",
     "Maximize your profit and minimize lost",
     "Keep farmers close to facility owners"
   ];
+
+  // List images = [
+  //   "assets/images/t1.jpeg",
+  //   "assets/images/t2.jpeg",
+  //   "assets/images/t3.jpeg"
+  // ];
 
 // control text change
   @override
@@ -49,6 +55,11 @@ class _HomePageState extends State<HomePage> {
         if (textIndex > headerText.length - 1) {
           textIndex = 0;
         }
+
+        // imgIndex = imgIndex + 1;
+        // if (imgIndex > images.length - 1) {
+        //   imgIndex = 0;
+        // }
       });
     });
 
@@ -89,10 +100,16 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // header section
+
             Container(
               height: 200,
-              width: double.infinity,
               color: appColor,
+              width: double.infinity,
+              // decoration: BoxDecoration(
+              //   color: appColor,
+              //   image: DecorationImage(
+              //       image: AssetImage(images[imgIndex]), fit: BoxFit.cover),
+              // ),
               child: Stack(
                 children: [
                   // text section
@@ -183,14 +200,15 @@ class _HomePageState extends State<HomePage> {
                       physics: const NeverScrollableScrollPhysics(),
                       builder: (ctx, index) => InkWell(
                           child: buildCard(
-                            data![index].imgUrl,
-                            data[index].name,
-                            "Size: ${data[index].farmSize}",
-                            data[index].location,
-                            DateFormat('dd/MM/yyyy')
-                                .format(data[index].createdAt!),
+                            data![data.length - index - 1].imgUrl,
+                            data[data.length - index - 1].name,
+                            "Size: ${data[data.length - index - 1].farmSize}",
+                            data[data.length - index - 1].location,
+                            DateFormat('dd/MM/yyyy').format(
+                                data[data.length - index - 1].createdAt!),
                           ),
-                          onTap: () => push(context, ViewFarm(data[index]))),
+                          onTap: () => push(context,
+                              ViewFarm(data[data.length - index - 1]))),
                     );
                   } else {
                     return Center(
@@ -236,13 +254,15 @@ class _HomePageState extends State<HomePage> {
                     physics: const NeverScrollableScrollPhysics(),
                     builder: (ctx, index) => InkWell(
                       child: buildCard(
-                        data[index].imgUrl,
-                        data[index].name,
-                        "Size: ${data[index].size ?? ""}",
-                        data[index].location,
-                        DateFormat('dd/MM/yyyy').format(data[index].createdAt!),
+                        data[data.length - index - 1].imgUrl,
+                        data[data.length - index - 1].name,
+                        "Size: ${data[data.length - index - 1].size ?? ""}",
+                        data[data.length - index - 1].location,
+                        DateFormat('dd/MM/yyyy')
+                            .format(data[data.length - index - 1].createdAt!),
                       ),
-                      onTap: () => push(context, ViewFacilities(data[index])),
+                      onTap: () => push(context,
+                          ViewFacilities(data[data.length - index - 1])),
                     ),
                   );
                 },
