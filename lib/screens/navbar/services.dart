@@ -24,7 +24,7 @@ class _ServicesState extends State<Services> {
 
   List text = [
     "Herbicide",
-    "Fertilizer/\nOrganic",
+    "Fertilizer/Organic",
     "Seeding",
     "Machanization",
   ];
@@ -62,7 +62,7 @@ class _ServicesState extends State<Services> {
                   ),
                 ),
               ),
-              onTap: () => push(context, const Viewservices()),
+              onTap: () => push(context, Viewservices(text[index])),
             ),
           ),
         ),

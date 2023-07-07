@@ -4,7 +4,9 @@ import 'package:grain/utilities/colors.dart';
 import 'package:grain/utilities/font.dart';
 
 class Viewservices extends StatefulWidget {
-  const Viewservices({super.key});
+  final String title;
+
+  const Viewservices(this.title, {super.key});
 
   @override
   State<Viewservices> createState() => _ViewservicesState();
@@ -25,7 +27,7 @@ class _ViewservicesState extends State<Viewservices> {
 // bg color
       backgroundColor: light,
 // appbar section
-      appBar: customeAppBar(context, "Viewservices"),
+      appBar: customeAppBar(context, widget.title),
 // app body section
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
