@@ -16,21 +16,17 @@ class Services extends StatefulWidget {
 
 class _ServicesState extends State<Services> {
   List img = [
-    "assets/images/img3.png",
-    "assets/images/img5.png",
-    "assets/images/img2.png",
-    "assets/images/img4.png",
-    "assets/images/img5.png",
     "assets/images/img1.png",
+    "assets/images/imgx.png",
+    "assets/images/imgxx.png",
+    "assets/images/img5.png",
   ];
 
   List text = [
-    "Seeds",
-    "Machineries",
-    "Storage\nFacilities",
-    "Harvested\ncrops",
-    "Trade",
-    "Farming\nInputs",
+    "Herbicide",
+    "Fertilizer/\nOrganic",
+    "Seeding",
+    "Machanization",
   ];
 
   @override
@@ -41,7 +37,7 @@ class _ServicesState extends State<Services> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: DynamicHeightGridView(
-            itemCount: 6,
+            itemCount: 4,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             crossAxisCount: 2,
@@ -49,7 +45,7 @@ class _ServicesState extends State<Services> {
             physics: const NeverScrollableScrollPhysics(),
             builder: (ctx, index) => InkWell(
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.26,
+                height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.3,
                 decoration: BoxDecoration(
                     color: appColor,

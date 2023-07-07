@@ -27,15 +27,7 @@ class _BookmarkssCornertate extends State<Bookmarks> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         // appbar section
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(120.0),
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            decoration: BoxDecoration(color: appColor),
-            child: const AppBarContent(
-                "Bookmarks", "Corn, maize, beans , rice seeds etc"),
-          ),
-        ),
+        appBar: customeAppBar(context, "Bookmarks"),
 
         // body section
         body: Padding(
